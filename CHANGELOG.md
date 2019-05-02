@@ -3,12 +3,12 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="0.41.1"></a>
-## [0.41.1](https://github.com/kaltura/kaltura-player-js/compare/v0.41.0...v0.41.1) (2019-05-01)
+## [0.41.1](https://github.com/vidiun/vidiun-player-js/compare/v0.41.0...v0.41.1) (2019-05-01)
 
 
 ### Bug Fixes
 
-* **FEC-9052:** allow player to load from partner 0([#237](https://github.com/kaltura/kaltura-player-js/issues/237)) ([eca464a](https://github.com/kaltura/kaltura-player-js/commit/eca464a))
+* **FEC-9052:** allow player to load from partner 0([#237](https://github.com/vidiun/vidiun-player-js/issues/237)) ([eca464a](https://github.com/vidiun/vidiun-player-js/commit/eca464a))
 
 
 
