@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="0.41.0"></a>
-## [0.41.0](https://github.com/kaltura/kaltura-player-js/compare/v0.40.15...v0.41.0) (2019-04-15)
+## [0.41.0](https://github.com/vidiun/vidiun-player-js/compare/v0.40.15...v0.41.0) (2019-04-15)
 
 
 
