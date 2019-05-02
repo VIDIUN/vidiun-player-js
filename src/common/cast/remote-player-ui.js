@@ -1,5 +1,5 @@
 // @flow
-import {Presets} from '@playkit-js/playkit-js-ui';
+import {Presets} from '@pakhshkit-js/pakhshkit-js-ui';
 
 /**
  * @class RemotePlayerUI

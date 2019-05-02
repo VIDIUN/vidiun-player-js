@@ -1,6 +1,6 @@
 // @flow
 import {setDefaultAnalyticsPlugin} from 'player-defaults';
-import {Env, TextStyle, Utils, setCapabilities, EngineType} from '@playkit-js/playkit-js';
+import {Env, TextStyle, Utils, setCapabilities, EngineType} from '@pakhshkit-js/pakhshkit-js';
 import {ValidationErrorType} from './validation-error';
 import StorageManager from '../storage/storage-manager';
 import type {LogLevelObject} from './logger';
@@ -8,21 +8,21 @@ import getLogger, {LogLevel, setLogLevel as _setLogLevel} from './logger';
 import {configureExternalStreamRedirect} from './external-stream-redirect-helper';
 import {RemotePlayerManager} from '../cast/remote-player-manager';
 import {RemoteControl} from '../cast/remote-control';
-import {KalturaPlayer} from '../../kaltura-player';
+import {VidiunPlayer} from '../../vidiun-player';
 
 const setupMessages: Array<Object> = [];
-const CONTAINER_CLASS_NAME: string = 'kaltura-player-container';
-const KALTURA_PLAYER_DEBUG_QS: string = 'debugKalturaPlayer';
+const CONTAINER_CLASS_NAME: string = 'vidiun-player-container';
+const VIDIUN_PLAYER_DEBUG_QS: string = 'debugVidiunPlayer';
 
 declare var __CONFIG_DOCS_URL__: string;
 
 /**
  * Validate the initial user config.
  * @private
- * @param {PartialKPOptionsObject} options - partial kaltura player options.
+ * @param {PartialVPOptionsObject} options - partial vidiun player options.
  * @returns {void}
  */
-function validateConfig(options: PartialKPOptionsObject): void {
+function validateConfig(options: PartialVPOptionsObject): void {
   if (!options) {
     throw new Error(ValidationErrorType.INITIAL_CONFIG_REQUIRED);
   }
@@ -67,7 +67,7 @@ function validateProviderConfig(providerOptions: ProviderOptionsObject): void {
  * @param {string} targetId - The div id which the player will append to.
  * @returns {string} - The player container id.
  */
-function createKalturaPlayerContainer(targetId: string): string {
+function createVidiunPlayerContainer(targetId: string): string {
   const el = document.createElement('div');
   el.id = Utils.Generator.uniqueId(5);
   el.className = CONTAINER_CLASS_NAME;
@@ -82,10 +82,10 @@ function createKalturaPlayerContainer(targetId: string): string {
 /**
  * Sets the storage config on the player config if certain conditions are met.
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {VPOptionsObject} options - vidiun player options
  * @returns {void}
  */
-function setStorageConfig(options: KPOptionsObject): void {
+function setStorageConfig(options: VPOptionsObject): void {
   if (!options.disableUserCache && StorageManager.isLocalStorageAvailable() && StorageManager.hasStorage()) {
     Utils.Object.mergeDeep(options, StorageManager.getStorageConfig());
   }
@@ -94,10 +94,10 @@ function setStorageConfig(options: KPOptionsObject): void {
 /**
  * Applies cache support if it's supported by the environment.
  * @private
- * @param {KalturaPlayer} player - The Kaltura player.
+ * @param {VidiunPlayer} player - The Vidiun player.
  * @returns {void}
  */
-function applyStorageSupport(player: KalturaPlayer): void {
+function applyStorageSupport(player: VidiunPlayer): void {
   if (StorageManager.isLocalStorageAvailable()) {
     StorageManager.attach(player);
   }
@@ -106,11 +106,11 @@ function applyStorageSupport(player: KalturaPlayer): void {
 /**
  * Loads the registered remote players.
  * @private
- * @param {KPOptionsObject} defaultOptions - The kaltura player options.
- * @param {KalturaPlayer} player - The Kaltura player.
+ * @param {VPOptionsObject} defaultOptions - The vidiun player options.
+ * @param {VidiunPlayer} player - The Vidiun player.
  * @returns {void}
  */
-function applyCastSupport(defaultOptions: KPOptionsObject, player: KalturaPlayer): void {
+function applyCastSupport(defaultOptions: VPOptionsObject, player: VidiunPlayer): void {
   if (defaultOptions.cast) {
     RemotePlayerManager.load(defaultOptions.cast, new RemoteControl(player));
   }
@@ -119,10 +119,10 @@ function applyCastSupport(defaultOptions: KPOptionsObject, player: KalturaPlayer
 /**
  * Sets the player text style from storage.
  * @private
- * @param {KalturaPlayer} player - The Kaltura player.
+ * @param {VidiunPlayer} player - The Vidiun player.
  * @returns {void}
  */
-function setStorageTextStyle(player: KalturaPlayer): void {
+function setStorageTextStyle(player: VidiunPlayer): void {
   if (StorageManager.isLocalStorageAvailable()) {
     const textStyleObj = StorageManager.getPlayerTextStyle();
     if (textStyleObj) {
@@ -134,7 +134,7 @@ function setStorageTextStyle(player: KalturaPlayer): void {
 /**
  * Call to setCapabilities on the first UI_CLICKED event
  * @private
- * @param {Player} player - The Kaltura player.
+ * @param {Player} player - The Vidiun player.
  * @returns {void}
  */
 function attachToFirstClick(player: Player): void {
@@ -158,13 +158,13 @@ function attachToFirstClick(player: Player): void {
  */
 function isDebugMode(): boolean {
   let isDebugMode = false;
-  if (window.DEBUG_KALTURA_PLAYER === true) {
+  if (window.DEBUG_VIDIUN_PLAYER === true) {
     isDebugMode = true;
   } else if (window.URLSearchParams) {
     const urlParams = new URLSearchParams(window.location.search);
-    isDebugMode = urlParams.has(KALTURA_PLAYER_DEBUG_QS);
+    isDebugMode = urlParams.has(VIDIUN_PLAYER_DEBUG_QS);
   } else {
-    isDebugMode = !!getUrlParameter(KALTURA_PLAYER_DEBUG_QS);
+    isDebugMode = !!getUrlParameter(VIDIUN_PLAYER_DEBUG_QS);
   }
   return isDebugMode;
 }
@@ -172,10 +172,10 @@ function isDebugMode(): boolean {
 /**
  * set the logger
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {VPOptionsObject} options - vidiun player options
  * @returns {void}
  */
-function setLogLevel(options: KPOptionsObject): void {
+function setLogLevel(options: VPOptionsObject): void {
   let logLevelObj: LogLevelObject = LogLevel.ERROR;
   if (isDebugMode()) {
     logLevelObj = LogLevel.DEBUG;
@@ -207,7 +207,7 @@ function getUrlParameter(name: string) {
  * @returns {boolean} - server UIConf exist
  */
 function serverUIConfExist(uiConfId: ?number): boolean {
-  const UIConf = Utils.Object.getPropertyPath(window, '__kalturaplayerdata.UIConf');
+  const UIConf = Utils.Object.getPropertyPath(window, '__vidiunplayerdata.UIConf');
   const hasUiConfId = uiConfId !== null && uiConfId !== undefined;
   return hasUiConfId && ((UIConf !== undefined && UIConf[uiConfId] !== undefined) || false);
 }
@@ -221,7 +221,7 @@ function serverUIConfExist(uiConfId: ?number): boolean {
 function extractServerUIConf(uiConfId: number): Object {
   let config = {};
   if (serverUIConfExist(uiConfId)) {
-    config = window.__kalturaplayerdata.UIConf[uiConfId];
+    config = window.__vidiunplayerdata.UIConf[uiConfId];
   }
   return config;
 }
@@ -229,12 +229,12 @@ function extractServerUIConf(uiConfId: number): Object {
 /**
  * Gets the default options after merging the user options with the uiConf options and the default internal options.
  * @private
- * @param {PartialKPOptionsObject} options - partial user kaltura player options.
- * @returns {KPOptionsObject} - default kaltura player options.
+ * @param {PartialVPOptionsObject} options - partial user vidiun player options.
+ * @returns {VPOptionsObject} - default vidiun player options.
  */
-function getDefaultOptions(options: PartialKPOptionsObject): KPOptionsObject {
-  const targetId = createKalturaPlayerContainer(options.targetId);
-  let defaultOptions: KPOptionsObject = {
+function getDefaultOptions(options: PartialVPOptionsObject): VPOptionsObject {
+  const targetId = createVidiunPlayerContainer(options.targetId);
+  let defaultOptions: VPOptionsObject = {
     targetId: options.targetId,
     provider: {
       partnerId: options.provider.partnerId
@@ -259,10 +259,10 @@ function getDefaultOptions(options: PartialKPOptionsObject): KPOptionsObject {
 /**
  * Sets config option for native HLS playback
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {VPOptionsObject} options - vidiun player options
  * @returns {void}
  */
-function checkNativeHlsSupport(options: KPOptionsObject): void {
+function checkNativeHlsSupport(options: VPOptionsObject): void {
   if (isSafari() || isIos()) {
     const preferNativeHlsValue = Utils.Object.getPropertyPath(options, 'playback.preferNative.hls');
     if (typeof preferNativeHlsValue !== 'boolean') {
@@ -280,10 +280,10 @@ function checkNativeHlsSupport(options: KPOptionsObject): void {
 /**
  * Sets config option for native text track support
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {VPOptionsObject} options - vidiun player options
  * @returns {void}
  */
-function checkNativeTextTracksSupport(options: KPOptionsObject): void {
+function checkNativeTextTracksSupport(options: VPOptionsObject): void {
   if (isSafari() || isIos()) {
     const useNativeTextTrack = Utils.Object.getPropertyPath(options, 'playback.useNativeTextTrack');
     if (typeof useNativeTextTrack !== 'boolean') {
@@ -299,10 +299,10 @@ function checkNativeTextTracksSupport(options: KPOptionsObject): void {
 /**
  * Sets config option fullscreen element for Vr Mode support
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {VPOptionsObject} options - vidiun player options
  * @returns {void}
  */
-function configureVrDefaultOptions(options: KPOptionsObject): void {
+function configureVrDefaultOptions(options: VPOptionsObject): void {
   if (options.plugins && options.plugins.vr && !options.plugins.vr.disable) {
     const fullscreenConfig = Utils.Object.getPropertyPath(options, 'playback.inBrowserFullscreen');
     if (typeof fullscreenConfig !== 'boolean') {
@@ -318,9 +318,9 @@ function configureVrDefaultOptions(options: KPOptionsObject): void {
  * Transform options structure from legacy structure to new structure.
  * @private
  * @param {Object} options - The options with the legacy structure.
- * @return {PartialKPOptionsObject} - Partial options with the expected structure.
+ * @return {PartialVPOptionsObject} - Partial options with the expected structure.
  */
-function supportLegacyOptions(options: Object): PartialKPOptionsObject {
+function supportLegacyOptions(options: Object): PartialVPOptionsObject {
   const removePlayerEntry = () => {
     if (options.player) {
       setupMessages.push({
@@ -369,7 +369,7 @@ function supportLegacyOptions(options: Object): PartialKPOptionsObject {
  * @returns {void}
  */
 function printSetupMessages(): void {
-  setupMessages.forEach(msgObj => getLogger('KalturaPlayer:Setup')[msgObj.level](msgObj.msg));
+  setupMessages.forEach(msgObj => getLogger('VidiunPlayer:Setup')[msgObj.level](msgObj.msg));
 }
 
 /**
@@ -393,10 +393,10 @@ function isIos(): boolean {
 /**
  * set stream priority according to playerConfig
  * @param {Player} player - player
- * @param {PartialKPOptionsObject} playerConfig - player config
+ * @param {PartialVPOptionsObject} playerConfig - player config
  * @return {void}
  */
-function maybeSetStreamPriority(player: Player, playerConfig: PartialKPOptionsObject): void {
+function maybeSetStreamPriority(player: Player, playerConfig: PartialVPOptionsObject): void {
   if (playerConfig.sources && hasYoutubeSource(playerConfig.sources)) {
     const playbackConfig = player.config.playback;
     let hasYoutube = false;
@@ -436,7 +436,7 @@ export {
   attachToFirstClick,
   validateConfig,
   setLogLevel,
-  createKalturaPlayerContainer,
+  createVidiunPlayerContainer,
   checkNativeHlsSupport,
   getDefaultOptions,
   isSafari,

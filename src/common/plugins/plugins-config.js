@@ -1,8 +1,8 @@
 //@flow
 import {pluginConfig, templateRegex} from './plugins-config-store.js';
 import evaluate from '../utils/evaluate';
-import {getReferrer} from '../utils/kaltura-params';
-import {Utils} from '@playkit-js/playkit-js';
+import {getReferrer} from '../utils/vidiun-params';
+import {Utils} from '@pakhshkit-js/pakhshkit-js';
 
 /**
  * returns whether value is evaluated
@@ -33,10 +33,10 @@ const removeUnevaluatedExpression = (obj = {}): Object =>
 /**
  * returns the data model for evaluating evaluation tokens
  * @private
- * @param {KPOptionsObject} options - the kaltura player options object
+ * @param {VPOptionsObject} options - the vidiun player options object
  * @returns {Object} - data model
  */
-const getModel = (options: KPOptionsObject): Object => {
+const getModel = (options: VPOptionsObject): Object => {
   const dataModel: Object = {
     pVersion: __VERSION__,
     pName: __NAME__
@@ -56,7 +56,7 @@ const getModel = (options: KPOptionsObject): Object => {
   };
   if (options.provider) {
     Utils.Object.mergeDeep(entryDataModel, {
-      ks: options.provider.ks,
+      vs: options.provider.vs,
       uiConfId: options.provider.uiConfId,
       partnerId: options.provider.partnerId
     });
@@ -64,7 +64,7 @@ const getModel = (options: KPOptionsObject): Object => {
   if (options.session) {
     Utils.Object.mergeDeep(entryDataModel, {
       sessionId: options.session.id,
-      ks: options.session.ks,
+      vs: options.session.vs,
       isAnonymous: options.session.isAnonymous,
       uiConfId: options.session.uiConfId,
       partnerId: options.session.partnerId
@@ -93,11 +93,11 @@ const getModel = (options: KPOptionsObject): Object => {
 
 /**
  * @param {PKPluginsConfigObject} options - plugins options
- * @param {KPOptionsObject} config - player config
+ * @param {VPOptionsObject} config - player config
  * @private
  * @return {void}
  */
-function evaluatePluginsConfig(options: ?PKPluginsConfigObject, config: KPOptionsObject): void {
+function evaluatePluginsConfig(options: ?PKPluginsConfigObject, config: VPOptionsObject): void {
   if (options) {
     pluginConfig.set(options);
     const dataModel = getModel(config);
@@ -109,17 +109,17 @@ function evaluatePluginsConfig(options: ?PKPluginsConfigObject, config: KPOption
 
 /**
  * @param {UIOptionsObject} options - UI options
- * @param {KPOptionsObject} config - player config
+ * @param {VPOptionsObject} config - player config
  * @private
  * @return {void}
  */
-function evaluateUIConfig(options: UIOptionsObject, config: KPOptionsObject): void {
+function evaluateUIConfig(options: UIOptionsObject, config: VPOptionsObject): void {
   if (options) {
     const defaultUiConfig = {
       components: {
         share: {
           shareUrl: `{{embedBaseUrl}}/index.php/extwidget/preview/partner_id/{{partnerId}}/uiconf_id/{{uiConfId}}/entry_id/{{entryId}}/embed/dynamic`,
-          embedUrl: `{{embedBaseUrl}}/p/{{partnerId}}/embedPlaykitJs/uiconf_id/{{uiConfId}}?iframeembed=true&entry_id={{entryId}}`
+          embedUrl: `{{embedBaseUrl}}/p/{{partnerId}}/embedPakhshkitJs/uiconf_id/{{uiConfId}}?iframeembed=true&entry_id={{entryId}}`
         }
       }
     };

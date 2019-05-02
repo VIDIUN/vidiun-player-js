@@ -31,7 +31,7 @@ player.Event.Core.EVENT_NAME;
 
 #### Core Events List
 
-The full core events list can be found [here](https://github.com/kaltura/playkit-js/blob/master/src/event/event-type.js).
+The full core events list can be found [here](https://github.com/vidiun/pakhshkit-js/blob/master/src/event/event-type.js).
 
 ### 2. UI Events
 
@@ -47,7 +47,7 @@ player.Event.UI.EVENT_NAME;
 
 #### UI Events List
 
-The full UI events list can be found [here](https://github.com/kaltura/playkit-js-ui/blob/master/docs/events.md).
+The full UI events list can be found [here](https://github.com/vidiun/pakhshkit-js-ui/blob/master/docs/events.md).
 
 ## Registering to Player Events
 

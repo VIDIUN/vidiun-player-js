@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>Title</title>
   <link rel="stylesheet" type="text/css" href="./style.css"/>
-  <script src="./kaltura-ovp-player.js" type="text/javascript"></script>
+  <script src="./vidiun-ovp-player.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="player-placeholder"></div>
@@ -15,15 +15,15 @@
     provider: {
       partnerId: 1091,
       env: {
-        cdnUrl: "http://qa-apache-php7.dev.kaltura.com/",
-        serviceUrl: "http://qa-apache-php7.dev.kaltura.com/api_v3"
+        cdnUrl: "http://qa-apache-php7.dev.vidiun.com/",
+        serviceUrl: "http://qa-apache-php7.dev.vidiun.com/api_v3"
       }
     }
   };
 
   try {
-    var kalturaPlayer = KalturaPlayer.setup(config);
-    kalturaPlayer.loadPlaylistByEntryList({entries: ['0_nwkp7jtx', '0_wifqaipd', '0_nwkp7jtx']});
+    var vidiunPlayer = VidiunPlayer.setup(config);
+    vidiunPlayer.loadPlaylistByEntryList({entries: ['0_nwkp7jtx', '0_wifqaipd', '0_nwkp7jtx']});
   } catch (e) {
     console.error(e.message)
   }

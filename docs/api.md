@@ -2,16 +2,16 @@
 
 ### Table of Contents
 
--   [KalturaPlayers][1]
--   [KPPlaylistOptions][2]
+-   [VidiunPlayers][1]
+-   [VPPlaylistOptions][2]
     -   [Properties][3]
--   [KPPlaylistCountdownOptions][4]
+-   [VPPlaylistCountdownOptions][4]
     -   [Properties][5]
--   [KPPlaylistConfigObject][6]
+-   [VPPlaylistConfigObject][6]
     -   [Properties][7]
--   [KPPlaylistObject][8]
+-   [VPPlaylistObject][8]
     -   [Properties][9]
--   [KPPlaylistItemConfigObject][10]
+-   [VPPlaylistItemConfigObject][10]
     -   [Properties][11]
 -   [BaseRemotePlayer][12]
     -   [Parameters][13]
@@ -264,13 +264,13 @@
 -   [getPlayer][260]
     -   [Parameters][261]
 
-## KalturaPlayers
+## VidiunPlayers
 
 a map of player instances by player ids
 
-Type: [Object][262]&lt;[string][263], KalturaPlayer>
+Type: [Object][262]&lt;[string][263], VidiunPlayer>
 
-## KPPlaylistOptions
+## VPPlaylistOptions
 
 Type: [Object][262]
 
@@ -279,7 +279,7 @@ Type: [Object][262]
 -   `autoContinue` **[boolean][264]?** Determine whether to continue to the next item automatically.
 -   `loop` **[boolean][264]?** Determine whether to play the playlist in a loop. When is true the playlist will played automatically even autoContinue is false.
 
-## KPPlaylistCountdownOptions
+## VPPlaylistCountdownOptions
 
 Type: [Object][262]
 
@@ -289,17 +289,17 @@ Type: [Object][262]
 -   `duration` **[number][265]?** Shows for how long the countdown will appear.
 -   `showing` **[boolean][264]?** Determines whether to show the countdown.
 
-## KPPlaylistConfigObject
+## VPPlaylistConfigObject
 
 Type: [Object][262]
 
 ### Properties
 
--   `options` **[KPPlaylistOptions][266]** The playlist options.
--   `countdown` **[KPPlaylistCountdownOptions][267]** The playlist countdown configuration.
+-   `options` **[VPPlaylistOptions][266]** The playlist options.
+-   `countdown` **[VPPlaylistCountdownOptions][267]** The playlist countdown configuration.
 -   `items` **[Array][268]&lt;[PlaylistItem][269]>** The playlist items.
 
-## KPPlaylistObject
+## VPPlaylistObject
 
 Type: [Object][262]
 
@@ -307,24 +307,24 @@ Type: [Object][262]
 
 -   `id` **[string][263]** The playlist ID.
 -   `metadata` **ProviderPlaylistMetadataObject** The playlist metadata.
--   `options` **[KPPlaylistOptions][266]** The playlist options.
--   `countdown` **[KPPlaylistCountdownOptions][267]** The playlist countdown configuration.
+-   `options` **[VPPlaylistOptions][266]** The playlist options.
+-   `countdown` **[VPPlaylistCountdownOptions][267]** The playlist countdown configuration.
 -   `items` **[Array][268]&lt;[PlaylistItem][269]>** The playlist items.
 
-## KPPlaylistItemConfigObject
+## VPPlaylistItemConfigObject
 
 Type: [Object][262]
 
 ### Properties
 
--   `countdown` **[KPPlaylistCountdownOptions][267]?** Countdown options
+-   `countdown` **[VPPlaylistCountdownOptions][267]?** Countdown options
 
 ## BaseRemotePlayer
 
 **Extends FakeEventTarget**
 
 Basic remote player.
-Implements the Kaltura Player playback, ads, tracks,vr and cast APIs.
+Implements the Vidiun Player playback, ads, tracks,vr and cast APIs.
 Remote players should extend this class and implement the needed API.
 
 ### Parameters
@@ -803,7 +803,7 @@ Returns **[string][263]** The remote player type.
 
 ### config
 
-Returns **KPOptionsObject** The runtime remote player config.
+Returns **VPOptionsObject** The runtime remote player config.
 
 ### defaultConfig
 
@@ -856,7 +856,7 @@ Type: [Object][262]
 
 ```javascript
 // How to use
-player.addEventListener(KalturaPlayer.cast.CastEventType.CAST_SESSION_STARTED, e => {
+player.addEventListener(VidiunPlayer.cast.CastEventType.CAST_SESSION_STARTED, e => {
   console.log(e.session);
 };
 ```
@@ -865,7 +865,7 @@ player.addEventListener(KalturaPlayer.cast.CastEventType.CAST_SESSION_STARTED, e
 
 ### Parameters
 
--   `player` **KalturaPlayer**  The Kaltura player.
+-   `player` **VidiunPlayer**  The Vidiun player.
 
 ### textStyle
 
@@ -883,7 +883,7 @@ Type: [Object][262]
 
 ### Parameters
 
--   `player` **KalturaPlayer** The Kaltura player.
+-   `player` **VidiunPlayer** The Vidiun player.
 
 ### getPlayerSnapshot
 
@@ -1163,7 +1163,7 @@ Type: [Object][262]
 
 ### config
 
-Type: KPOptionsObject
+Type: VPOptionsObject
 
 ### addEventListener
 
@@ -1348,7 +1348,7 @@ Type: [Object][262]
 
 ```javascript
 // How to use
-player.addEventListener(KalturaPlayer.playlist.PlaylistEventType.PLAYLIST_LOADED, e => {
+player.addEventListener(VidiunPlayer.playlist.PlaylistEventType.PLAYLIST_LOADED, e => {
   console.log(e.payload.playlist.metadata.name);
 };
 ```
@@ -1358,7 +1358,7 @@ player.addEventListener(KalturaPlayer.playlist.PlaylistEventType.PLAYLIST_LOADED
 ### Parameters
 
 -   `sources` **ProviderMediaConfigSourcesObject?** The item sources
--   `config` **[KPPlaylistItemConfigObject][280]?** The item config
+-   `config` **[VPPlaylistItemConfigObject][280]?** The item config
 
 ### updateSources
 
@@ -1382,9 +1382,9 @@ Returns **ProviderMediaConfigSourcesObject?**
 
 Playlist item config
 
-Type: [KPPlaylistItemConfigObject][280]?
+Type: [VPPlaylistItemConfigObject][280]?
 
-Returns **[KPPlaylistItemConfigObject][280]?** 
+Returns **[VPPlaylistItemConfigObject][280]?** 
 
 ### isPlayable
 
@@ -1394,8 +1394,8 @@ Returns **[boolean][264]** = Whether the playlist item has sources to play
 
 ### Parameters
 
--   `player` **KalturaPlayer** The player instance
--   `options` **KPOptionsObject** The player config object
+-   `player` **VidiunPlayer** The player instance
+-   `options` **VPOptionsObject** The player config object
 
 ### configure
 
@@ -1403,7 +1403,7 @@ Config the playlist
 
 #### Parameters
 
--   `config` **[KPPlaylistObject][281]?** The playlist config
+-   `config` **[VPPlaylistObject][281]?** The playlist config
 -   `entryList` **ProviderEntryListObject?** Entry list
 
 Returns **void** 
@@ -1414,8 +1414,8 @@ Load a playlist
 
 #### Parameters
 
--   `playlistData` **[KPPlaylistObject][281]** The playlist data
--   `playlistConfig` **[KPPlaylistConfigObject][282]?** The playlist config
+-   `playlistData` **[VPPlaylistObject][281]** The playlist data
+-   `playlistConfig` **[VPPlaylistConfigObject][282]?** The playlist config
 -   `entryList` **ProviderEntryListObject?** Entry list
 
 Returns **void** 
@@ -1500,17 +1500,17 @@ Returns **[string][263]?**
 
 Playlist countdown
 
-Type: [KPPlaylistCountdownOptions][267]
+Type: [VPPlaylistCountdownOptions][267]
 
-Returns **[KPPlaylistCountdownOptions][267]** 
+Returns **[VPPlaylistCountdownOptions][267]** 
 
 ### options
 
 Playlist options
 
-Type: [KPPlaylistOptions][266]
+Type: [VPPlaylistOptions][266]
 
-Returns **[KPPlaylistOptions][266]** 
+Returns **[VPPlaylistOptions][266]** 
 
 ## loadPlaylist
 
@@ -1519,12 +1519,12 @@ Loads a playlist by id.
 ### Parameters
 
 -   `playlistInfo` **ProviderPlaylistInfoObject** The playlist info.
--   `playlistConfig` **[KPPlaylistConfigObject][282]?** The playlist config.
+-   `playlistConfig` **[VPPlaylistConfigObject][282]?** The playlist config.
 
 ### Examples
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
+vidiunPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
 ```
 
 Returns **[Promise][271]&lt;ProviderPlaylistObject>** The playlist data from the provider.
@@ -1536,12 +1536,12 @@ Loads a playlist by entry list.
 ### Parameters
 
 -   `entryList` **ProviderEntryListObject** The playlist info.
--   `playlistConfig` **[KPPlaylistConfigObject][282]?** The playlist config.
+-   `playlistConfig` **[VPPlaylistConfigObject][282]?** The playlist config.
 
 ### Examples
 
 ```javascript
-kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
+vidiunPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
 ```
 
 Returns **[Promise][271]&lt;ProviderPlaylistObject>** The playlist data from the provider.
@@ -1557,7 +1557,7 @@ Config the player.
 ### Examples
 
 ```javascript
-kalturaPlayer.configure({playback: {autoplay: true}});
+vidiunPlayer.configure({playback: {autoplay: true}});
 ```
 
 Returns **void** 
@@ -1571,7 +1571,7 @@ Type: [PlaylistManager][283]
 ### Examples
 
 ```javascript
-KalturaPlayer.playlist.playNext();
+VidiunPlayer.playlist.playNext();
 ```
 
 Returns **[PlaylistManager][283]** 
@@ -1580,7 +1580,7 @@ Returns **[PlaylistManager][283]**
 
 get all instantiated players
 
-Returns **[KalturaPlayers][284]** map of player ids and their respective instantiated player
+Returns **[VidiunPlayers][284]** map of player ids and their respective instantiated player
 
 ## getPlayer
 
@@ -1590,27 +1590,27 @@ get a player instance by id
 
 -   `id` **[string][263]** the player ID
 
-Returns **(KalturaPlayer | null)** the player if found by the supplied ID or null if key doesn't exist
+Returns **(VidiunPlayer | null)** the player if found by the supplied ID or null if key doesn't exist
 
-[1]: #kalturaplayers
+[1]: #vidiunplayers
 
-[2]: #kpplaylistoptions
+[2]: #vpplaylistoptions
 
 [3]: #properties
 
-[4]: #kpplaylistcountdownoptions
+[4]: #vpplaylistcountdownoptions
 
 [5]: #properties-1
 
-[6]: #kpplaylistconfigobject
+[6]: #vpplaylistconfigobject
 
 [7]: #properties-2
 
-[8]: #kpplaylistobject
+[8]: #vpplaylistobject
 
 [9]: #properties-3
 
-[10]: #kpplaylistitemconfigobject
+[10]: #vpplaylistitemconfigobject
 
 [11]: #properties-4
 
@@ -2122,9 +2122,9 @@ Returns **(KalturaPlayer | null)** the player if found by the supplied ID or nul
 
 [265]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[266]: #kpplaylistoptions
+[266]: #vpplaylistoptions
 
-[267]: #kpplaylistcountdownoptions
+[267]: #vpplaylistcountdownoptions
 
 [268]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
@@ -2150,12 +2150,12 @@ Returns **(KalturaPlayer | null)** the player if found by the supplied ID or nul
 
 [279]: #remoteplayerui
 
-[280]: #kpplaylistitemconfigobject
+[280]: #vpplaylistitemconfigobject
 
-[281]: #kpplaylistobject
+[281]: #vpplaylistobject
 
-[282]: #kpplaylistconfigobject
+[282]: #vpplaylistconfigobject
 
 [283]: #playlistmanager
 
-[284]: #kalturaplayers
+[284]: #vidiunplayers

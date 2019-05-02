@@ -1,5 +1,5 @@
 // @flow
-import {TextStyle} from '@playkit-js/playkit-js';
+import {TextStyle} from '@pakhshkit-js/pakhshkit-js';
 
 class TextStyleConverter {
   static toCastTextStyle(playerTextStyle: TextStyle): Object {

@@ -1,4 +1,4 @@
 // @flow
-declare module '@playkit-js/playkit-js' {
+declare module '@pakhshkit-js/pakhshkit-js' {
   declare module.exports: any;
 }

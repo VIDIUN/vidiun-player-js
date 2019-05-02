@@ -14,7 +14,7 @@ var mediaInfo = {
 
 To learn how to fill your media info object correctly, click the relevant media information documentation below.
 
-> Note: For OVP players, you'll only need to fill the entryid (mandatory) and the KS (optional). For Cloud TV players, you'll need to provide these parameters and more. See details below.
+> Note: For OVP players, you'll only need to fill the entryid (mandatory) and the VS (optional). For Cloud TV players, you'll need to provide these parameters and more. See details below.
 
 <details><summary><b>MediaInfo Documentation - OVP</b></summary>
 <p>
@@ -24,7 +24,7 @@ To learn how to fill your media info object correctly, click the relevant media 
 ```js
 {
   entryId: string,
-  ks: string
+  vs: string
 }
 ```
 
@@ -33,7 +33,7 @@ To learn how to fill your media info object correctly, click the relevant media 
 | Name      | Type     | Required | Description                     | Possible Values | Default Value |
 | --------- | -------- | -------- | ------------------------------- | --------------- | ------------- |
 | `entryId` | `string` | V        | The entry ID of the media       |
-| `ks`      | `string` |          | The KS (Kaltura Session) secret |
+| `vs`      | `string` |          | The VS (Vidiun Session) secret |
 
 ### Examples
 
@@ -45,12 +45,12 @@ var mediaInfo = {
 };
 ```
 
-#### Using the KS
+#### Using the VS
 
 ```js
 var mediaInfo = {
   entryId: 'YOUR_ENTRY_ID',
-  ks: 'YOUR_KS'
+  vs: 'YOUR_VS'
 };
 ```
 
@@ -65,7 +65,7 @@ var mediaInfo = {
 ```js
 {
   entryId: string,
-  ks: string,
+  vs: string,
   mediaType: string,
   contextType: string,
   assetReferenceType: string,
@@ -83,7 +83,7 @@ var mediaInfo = {
 | `mediaType`          | `string`        |          | The type of the specific media         | `"media"`, `"epg"`, `"recording"`                      | `"media"`     |
 | `assetReferenceType` | `string`        |          | The asset type of the specific media   | `"media"`, `"epg_internal"`, `"epg_external"`          | `"media"`     |
 | `contextType`        | `string`        |          | The playback context type              | `"PLAYBACK"`, `"CATCHUP"`, `"START_OVER"`, `"TRAILER"` | `"PLAYBACK"`  |
-| `ks`                 | `string`        |          | The KS (Kaltura Session) secret        |
+| `vs`                 | `string`        |          | The VS (Vidiun Session) secret        |
 | `protocol`           | `string`        |          | The protocol of the specific media     | `"https"`, `"http"`                                    |
 | `fileIds`            | `string`        |          | List of comma-separated media file IDs |
 | `formats`            | `Array<string>` |          | Device types as defined in the system. |
@@ -100,12 +100,12 @@ var mediaInfo = {
 };
 ```
 
-### Using the KS
+### Using the VS
 
 ```js
 var mediaInfo = {
   entryId: 'YOUR_ENTRY_ID',
-  ks: 'YOUR_KS'
+  vs: 'YOUR_VS'
   ...
 };
 ```

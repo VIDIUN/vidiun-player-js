@@ -1,5 +1,5 @@
 // @flow
-import {KalturaPlayer} from './kaltura-player';
+import {VidiunPlayer} from './vidiun-player';
 import {getPlayerProxy} from './proxy';
 import {evaluatePluginsConfig} from './common/plugins/plugins-config';
 import {
@@ -16,12 +16,12 @@ import {
 } from './common/utils/setup-helpers';
 
 /**
- * Setup the Kaltura Player.
- * @param {PartialKPOptionsObject|LegacyPartialKPOptionsObject} options - partial kaltura player options
+ * Setup the Vidiun Player.
+ * @param {PartialVPOptionsObject|LegacyPartialVPOptionsObject} options - partial vidiun player options
  * @private
- * @returns {KalturaPlayer} - The Kaltura Player.
+ * @returns {VidiunPlayer} - The Vidiun Player.
  */
-function setup(options: PartialKPOptionsObject | LegacyPartialKPOptionsObject): KalturaPlayer {
+function setup(options: PartialVPOptionsObject | LegacyPartialVPOptionsObject): VidiunPlayer {
   options = supportLegacyOptions(options);
   validateConfig(options);
   const defaultOptions = getDefaultOptions(options);
