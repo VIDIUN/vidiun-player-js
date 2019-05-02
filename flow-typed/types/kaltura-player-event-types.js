@@ -1,5 +1,5 @@
 // @flow
-declare type KPEventTypes = {
+declare type VPEventTypes = {
   Core: PKEventTypes,
   UI: { [event: string]: string },
   Cast: { [event: string]: string },

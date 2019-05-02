@@ -1,11 +1,11 @@
 // @flow
-import {EventType as UIEventType} from '@playkit-js/playkit-js-ui';
-import {Provider} from 'playkit-js-providers';
+import {EventType as UIEventType} from '@pakhshkit-js/pakhshkit-js-ui';
+import {Provider} from 'pakhshkit-js-providers';
 import {supportLegacyOptions, maybeSetStreamPriority, hasYoutubeSource} from './common/utils/setup-helpers';
 import getLogger from './common/utils/logger';
-import {addKalturaParams} from './common/utils/kaltura-params';
+import {addVidiunParams} from './common/utils/vidiun-params';
 import {evaluatePluginsConfig, evaluateUIConfig} from './common/plugins/plugins-config';
-import {addKalturaPoster} from 'poster';
+import {addVidiunPoster} from 'poster';
 import './assets/style.css';
 import {UIWrapper} from './common/ui-wrapper';
 import {PlaylistManager} from './common/playlist/playlist-manager';
@@ -26,9 +26,9 @@ import {
   TextStyle,
   Track,
   Utils
-} from '@playkit-js/playkit-js';
+} from '@pakhshkit-js/pakhshkit-js';
 
-class KalturaPlayer extends FakeEventTarget {
+class VidiunPlayer extends FakeEventTarget {
   _eventManager: EventManager;
   _mediaInfo: ?ProviderMediaInfoObject = null;
   _remotePlayer: ?BaseRemotePlayer = null;
@@ -37,13 +37,13 @@ class KalturaPlayer extends FakeEventTarget {
   _uiWrapper: UIWrapper;
   _logger: any;
 
-  constructor(options: KPOptionsObject) {
+  constructor(options: VPOptionsObject) {
     super();
     this._eventManager = new EventManager();
     const {sources} = options;
     const noSourcesOptions = Utils.Object.mergeDeep({}, options, {sources: null});
     this._localPlayer = loadPlayer(noSourcesOptions);
-    this._logger = getLogger('KalturaPlayer' + Utils.Generator.uniqueId(5));
+    this._logger = getLogger('VidiunPlayer' + Utils.Generator.uniqueId(5));
     this._uiWrapper = new UIWrapper(this, options);
     this._provider = new Provider(options.provider, __VERSION__);
     this._playlistManager = new PlaylistManager(this, options);
@@ -81,8 +81,8 @@ class KalturaPlayer extends FakeEventTarget {
     Object.keys(this._localPlayer.config.plugins).forEach(name => {
       playerConfig.plugins[name] = {};
     });
-    addKalturaPoster(playerConfig.sources, mediaConfig.sources, this._localPlayer.dimensions);
-    addKalturaParams(this, playerConfig);
+    addVidiunPoster(playerConfig.sources, mediaConfig.sources, this._localPlayer.dimensions);
+    addVidiunParams(this, playerConfig);
     maybeSetStreamPriority(this, playerConfig);
     if (!hasYoutubeSource(playerConfig.sources)) {
       this._uiWrapper.setSeekbarConfig(mediaConfig, this._localPlayer.config.ui);
@@ -93,14 +93,14 @@ class KalturaPlayer extends FakeEventTarget {
   /**
    * Loads a playlist by id.
    * @param {ProviderPlaylistInfoObject} playlistInfo - The playlist info.
-   * @param {KPPlaylistConfigObject} [playlistConfig] - The playlist config.
+   * @param {VPPlaylistConfigObject} [playlistConfig] - The playlist config.
    * @returns {Promise<ProviderPlaylistObject>} - The playlist data from the provider.
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof VidiunPlayer
    * @example
-   * kalturaPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
+   * vidiunPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
    */
-  loadPlaylist(playlistInfo: ProviderPlaylistInfoObject, playlistConfig: ?KPPlaylistConfigObject): Promise<ProviderPlaylistObject> {
+  loadPlaylist(playlistInfo: ProviderPlaylistInfoObject, playlistConfig: ?VPPlaylistConfigObject): Promise<ProviderPlaylistObject> {
     this._logger.debug('loadPlaylist', playlistInfo);
     this._uiWrapper.setLoadingSpinnerState(true);
     const providerResult = this._provider.getPlaylistConfig(playlistInfo);
@@ -117,14 +117,14 @@ class KalturaPlayer extends FakeEventTarget {
   /**
    * Loads a playlist by entry list.
    * @param {ProviderEntryListObject} entryList - The playlist info.
-   * @param {KPPlaylistConfigObject} [playlistConfig] - The playlist config.
+   * @param {VPPlaylistConfigObject} [playlistConfig] - The playlist config.
    * @returns {Promise<ProviderPlaylistObject>} - The playlist data from the provider.
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof VidiunPlayer
    * @example
-   * kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
+   * vidiunPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
    */
-  loadPlaylistByEntryList(entryList: ProviderEntryListObject, playlistConfig: ?KPPlaylistConfigObject): Promise<ProviderPlaylistObject> {
+  loadPlaylistByEntryList(entryList: ProviderEntryListObject, playlistConfig: ?VPPlaylistConfigObject): Promise<ProviderPlaylistObject> {
     this._logger.debug('loadPlaylistByEntryList', entryList);
     this._uiWrapper.setLoadingSpinnerState(true);
     const providerResult = this._provider.getEntryListConfig(entryList);
@@ -138,7 +138,7 @@ class KalturaPlayer extends FakeEventTarget {
     return providerResult;
   }
 
-  setPlaylist(playlistData: ProviderPlaylistObject, playlistConfig: ?KPPlaylistConfigObject, entryList: ?ProviderEntryListObject): void {
+  setPlaylist(playlistData: ProviderPlaylistObject, playlistConfig: ?VPPlaylistConfigObject, entryList: ?ProviderEntryListObject): void {
     this._logger.debug('setPlaylist', playlistData);
     const config = {playlist: playlistData, plugins: {}};
     Object.keys(this._localPlayer.config.plugins).forEach(name => {
@@ -159,9 +159,9 @@ class KalturaPlayer extends FakeEventTarget {
    * @param {Object} [config={}] - The player config.
    * @returns {void}
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof VidiunPlayer
    * @example
-   * kalturaPlayer.configure({playback: {autoplay: true}});
+   * vidiunPlayer.configure({playback: {autoplay: true}});
    */
   configure(config: Object = {}): void {
     config = supportLegacyOptions(config);
@@ -459,15 +459,15 @@ class KalturaPlayer extends FakeEventTarget {
    * The playlist controller.
    * @type {PlaylistManager}
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof VidiunPlayer
    * @example
-   * KalturaPlayer.playlist.playNext();
+   * VidiunPlayer.playlist.playNext();
    */
   get playlist(): PlaylistManager {
     return this._playlistManager;
   }
 
-  get Event(): KPEventTypes {
+  get Event(): VPEventTypes {
     return {
       Cast: CastEventType,
       Core: CoreEventType,
@@ -532,4 +532,4 @@ class KalturaPlayer extends FakeEventTarget {
   }
 }
 
-export {KalturaPlayer};
+export {VidiunPlayer};

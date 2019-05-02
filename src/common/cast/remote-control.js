@@ -1,9 +1,9 @@
 /* eslint-disable require-jsdoc */
 // @flow
-import {KalturaPlayer} from '../../kaltura-player';
+import {VidiunPlayer} from '../../vidiun-player';
 import {PlayerSnapshot} from './player-snapshot';
 import {CastEventType} from './cast-event-type';
-import {EventType as CoreEventType, FakeEvent, loadPlayer, TrackType, Utils} from '@playkit-js/playkit-js';
+import {EventType as CoreEventType, FakeEvent, loadPlayer, TrackType, Utils} from '@pakhshkit-js/pakhshkit-js';
 import {RemoteAvailablePayload, RemoteConnectedPayload, RemoteDisconnectedPayload} from './remote-payload';
 import {UIWrapper} from '../ui-wrapper';
 import getLogger from '../utils/logger';
@@ -12,7 +12,7 @@ const logger: any = getLogger('RemoteControl');
 
 /**
  * @class RemoteControl
- * @param {KalturaPlayer} player - The Kaltura player.
+ * @param {VidiunPlayer} player - The Vidiun player.
  */
 class RemoteControl {
   /**
@@ -76,7 +76,7 @@ class RemoteControl {
    */
   onRemoteDeviceConnectFailed: Function;
 
-  constructor(player: KalturaPlayer) {
+  constructor(player: VidiunPlayer) {
     this.getPlayerSnapshot = getPlayerSnapshot.bind(player);
     this.getUIWrapper = getUIWrapper.bind(player);
     this.onRemoteDeviceAvailable = onRemoteDeviceAvailable.bind(player);

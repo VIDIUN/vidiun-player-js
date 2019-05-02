@@ -1,5 +1,5 @@
 // @flow
-import {FakeEvent, TextStyle, Track} from '@playkit-js/playkit-js';
+import {FakeEvent, TextStyle, Track} from '@pakhshkit-js/pakhshkit-js';
 import {RemoteSession} from './remote-session';
 
 /**
@@ -116,7 +116,7 @@ export interface IRemotePlayer {
   +ads: ?Object;
   /**
    * @readonly
-   * @type {KPOptionsObject}
+   * @type {VPOptionsObject}
    * @instance
    * @memberof IRemotePlayer
    */

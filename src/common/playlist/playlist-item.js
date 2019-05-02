@@ -3,13 +3,13 @@ const formats = ['hls', 'dash', 'progressive'];
 /**
  * @class PlaylistItem
  * @param {ProviderMediaConfigSourcesObject} [sources] - The item sources
- * @param {KPPlaylistItemConfigObject} [config] - The item config
+ * @param {VPPlaylistItemConfigObject} [config] - The item config
  */
 class PlaylistItem {
   _sources: ?ProviderMediaConfigSourcesObject;
-  _config: ?KPPlaylistItemConfigObject;
+  _config: ?VPPlaylistItemConfigObject;
 
-  constructor(sources: ?ProviderMediaConfigSourcesObject, config: ?KPPlaylistItemConfigObject) {
+  constructor(sources: ?ProviderMediaConfigSourcesObject, config: ?VPPlaylistItemConfigObject) {
     this._sources = sources;
     this._config = config;
   }
@@ -44,11 +44,11 @@ class PlaylistItem {
 
   /**
    * Playlist item config
-   * @type {?KPPlaylistItemConfigObject}
+   * @type {?VPPlaylistItemConfigObject}
    * @instance
    * @memberof PlaylistItem
    */
-  get config(): ?KPPlaylistItemConfigObject {
+  get config(): ?VPPlaylistItemConfigObject {
     return this._config;
   }
 

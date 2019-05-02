@@ -1,28 +1,28 @@
 // @flow
-import {KalturaPlayer} from '../../kaltura-player';
-import {FakeEvent, Utils, EventManager} from '@playkit-js/playkit-js';
+import {VidiunPlayer} from '../../vidiun-player';
+import {FakeEvent, Utils, EventManager} from '@pakhshkit-js/pakhshkit-js';
 import {PlaylistEventType} from './playlist-event-type';
 import getLogger from '../utils/logger';
 import {Playlist} from './playlist';
 import {PlaylistItem} from './playlist-item';
-import {addKalturaPoster} from 'poster';
+import {addVidiunPoster} from 'poster';
 
 /**
  * @class PlaylistManager
- * @param {KalturaPlayer} player - The player instance
- * @param {KPOptionsObject} options - The player config object
+ * @param {VidiunPlayer} player - The player instance
+ * @param {VPOptionsObject} options - The player config object
  */
 class PlaylistManager {
   _logger: any = getLogger('PlaylistManager');
-  _player: KalturaPlayer;
+  _player: VidiunPlayer;
   _eventManager: EventManager;
   _playlist: Playlist;
-  _options: KPPlaylistOptions;
-  _countdown: KPPlaylistCountdownOptions;
-  _playerOptions: KPOptionsObject;
+  _options: VPPlaylistOptions;
+  _countdown: VPPlaylistCountdownOptions;
+  _playerOptions: VPOptionsObject;
   _mediaInfoList: Array<ProviderMediaInfoObject>;
 
-  constructor(player: KalturaPlayer, options: KPOptionsObject) {
+  constructor(player: VidiunPlayer, options: VPOptionsObject) {
     this._player = player;
     this._eventManager = new EventManager();
     this._playlist = new Playlist();
@@ -34,13 +34,13 @@ class PlaylistManager {
 
   /**
    * Config the playlist
-   * @param {KPPlaylistObject} [config] - The playlist config
+   * @param {VPPlaylistObject} [config] - The playlist config
    * @param {ProviderEntryListObject} [entryList] - Entry list
    * @returns {void}
    * @instance
    * @memberof PlaylistManager
    */
-  configure(config: ?KPPlaylistObject, entryList: ?ProviderEntryListObject) {
+  configure(config: ?VPPlaylistObject, entryList: ?ProviderEntryListObject) {
     if (config) {
       this._playlist.configure(config);
       Utils.Object.mergeDeep(this._options, config.options);
@@ -60,15 +60,15 @@ class PlaylistManager {
 
   /**
    * Load a playlist
-   * @param {KPPlaylistObject} playlistData - The playlist data
-   * @param {KPPlaylistConfigObject} [playlistConfig] - The playlist config
+   * @param {VPPlaylistObject} playlistData - The playlist data
+   * @param {VPPlaylistConfigObject} [playlistConfig] - The playlist config
    * @param {ProviderEntryListObject} [entryList] - Entry list
    * @returns {void}
    * @instance
    * @memberof PlaylistManager
    */
-  load(playlistData: ProviderPlaylistObject, playlistConfig: ?KPPlaylistConfigObject, entryList: ?ProviderEntryListObject): void {
-    const mergedPlaylistData: KPPlaylistObject = this._getMergedPlaylistData(playlistData, playlistConfig);
+  load(playlistData: ProviderPlaylistObject, playlistConfig: ?VPPlaylistConfigObject, entryList: ?ProviderEntryListObject): void {
+    const mergedPlaylistData: VPPlaylistObject = this._getMergedPlaylistData(playlistData, playlistConfig);
     this.configure(mergedPlaylistData, entryList);
   }
 
@@ -189,13 +189,13 @@ class PlaylistManager {
 
   /**
    * Playlist countdown
-   * @type {KPPlaylistCountdownOptions}
+   * @type {VPPlaylistCountdownOptions}
    * @instance
    * @memberof PlaylistManager
    */
-  get countdown(): KPPlaylistCountdownOptions {
+  get countdown(): VPPlaylistCountdownOptions {
     if (this._playlist.current.item && this._playlist.current.item.config) {
-      const mergedConfig: KPPlaylistCountdownOptions = {duration: 10, showing: true};
+      const mergedConfig: VPPlaylistCountdownOptions = {duration: 10, showing: true};
       Utils.Object.mergeDeep(mergedConfig, this._countdown, this._playlist.current.item.config.countdown);
       return mergedConfig;
     }
@@ -204,16 +204,16 @@ class PlaylistManager {
 
   /**
    * Playlist options
-   * @type {KPPlaylistOptions}
+   * @type {VPPlaylistOptions}
    * @instance
    * @memberof PlaylistManager
    */
-  get options(): KPPlaylistOptions {
+  get options(): VPPlaylistOptions {
     return this._options;
   }
 
-  _getMergedPlaylistData(playlistData: ProviderPlaylistObject, playlistConfig: ?KPPlaylistConfigObject): KPPlaylistObject {
-    const mergedPlaylistData: KPPlaylistObject = {
+  _getMergedPlaylistData(playlistData: ProviderPlaylistObject, playlistConfig: ?VPPlaylistConfigObject): VPPlaylistObject {
+    const mergedPlaylistData: VPPlaylistObject = {
       id: playlistData.id,
       metadata: playlistData.metadata,
       poster: (playlistData.poster: string),
@@ -226,7 +226,7 @@ class PlaylistManager {
           playlistConfig && playlistConfig.items && playlistConfig.items[index] && playlistConfig.items[index].sources
         );
         if (Array.isArray(itemData.sources.poster)) {
-          addKalturaPoster(itemData.sources, item.sources, this._player.dimensions);
+          addVidiunPoster(itemData.sources, item.sources, this._player.dimensions);
         }
         return {
           sources: itemData.sources,

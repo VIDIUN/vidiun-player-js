@@ -1,13 +1,13 @@
 // @flow
-import {Utils} from '@playkit-js/playkit-js';
+import {Utils} from '@pakhshkit-js/pakhshkit-js';
 
 /**
  * Sets the default analytics plugin for the ovp player.
- * @param {KPOptionsObject} options - The player config.
+ * @param {VPOptionsObject} options - The player config.
  * @private
  * @returns {void}
  */
-export function setDefaultAnalyticsPlugin(options: KPOptionsObject): void {
+export function setDefaultAnalyticsPlugin(options: VPOptionsObject): void {
   let kavaPlugin = Utils.Object.getPropertyPath(options, 'plugins.kava');
   if (!kavaPlugin) {
     kavaPlugin = Utils.Object.mergeDeep(options, {
@@ -16,15 +16,15 @@ export function setDefaultAnalyticsPlugin(options: KPOptionsObject): void {
       }
     });
   }
-  let kanalyticsPlugin = Utils.Object.getPropertyPath(options, 'plugins.kanalytics');
-  if (!kanalyticsPlugin) {
-    kanalyticsPlugin = Utils.Object.mergeDeep(options, {
+  let vanalyticsPlugin = Utils.Object.getPropertyPath(options, 'plugins.vanalytics');
+  if (!vanalyticsPlugin) {
+    vanalyticsPlugin = Utils.Object.mergeDeep(options, {
       plugins: {
-        kanalytics: {}
+        vanalytics: {}
       }
     });
   }
-  if (options.plugins && !kavaPlugin.disable && !kanalyticsPlugin.disable) {
-    Object.assign(options.plugins.kanalytics, {hasKanalony: true});
+  if (options.plugins && !kavaPlugin.disable && !vanalyticsPlugin.disable) {
+    Object.assign(options.plugins.vanalytics, {hasVanalony: true});
   }
 }

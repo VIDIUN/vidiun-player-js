@@ -2,7 +2,7 @@ import StorageManager from '../../../../src/common/storage/storage-manager';
 import StorageWrapper from '../../../../src/common/storage/storage-wrapper';
 import * as TestUtils from '../../utils/test-utils';
 import {setup} from '../../../../src';
-import {FakeEvent} from '@playkit-js/playkit-js';
+import {FakeEvent} from '@pakhshkit-js/pakhshkit-js';
 
 const targetId = 'player-placeholder_storage-manager.spec';
 

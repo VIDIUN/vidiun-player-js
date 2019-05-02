@@ -3,7 +3,7 @@ import {ValidationErrorType} from '../../../../src/common/utils/validation-error
 import StorageManager from '../../../../src/common/storage/storage-manager';
 import {
   checkNativeHlsSupport,
-  createKalturaPlayerContainer,
+  createVidiunPlayerContainer,
   isIos,
   isSafari,
   setStorageConfig,
@@ -55,7 +55,7 @@ describe('error handling', function() {
   });
 });
 
-describe('createKalturaPlayerContainer', function() {
+describe('createVidiunPlayerContainer', function() {
   beforeEach(function() {
     TestUtils.createElement('DIV', targetId);
   });
@@ -64,11 +64,11 @@ describe('createKalturaPlayerContainer', function() {
     TestUtils.removeElement(targetId);
   });
 
-  it('should create kaltura player container', function() {
-    let containerId = createKalturaPlayerContainer(targetId);
+  it('should create vidiun player container', function() {
+    let containerId = createVidiunPlayerContainer(targetId);
     let el = document.getElementById(containerId);
     el.should.exist;
-    el.className.should.equal('kaltura-player-container');
+    el.className.should.equal('vidiun-player-container');
   });
 });
 

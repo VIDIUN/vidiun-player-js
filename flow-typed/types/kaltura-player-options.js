@@ -1,7 +1,7 @@
 // @flow
-import {KPPlaylistObject} from './playlist';
+import {VPPlaylistObject} from './playlist';
 
-declare type KPOptionsObject = {
+declare type VPOptionsObject = {
   targetId: string,
   logLevel?: string,
   disableUserCache?: boolean,
@@ -10,12 +10,12 @@ declare type KPOptionsObject = {
   plugins?: PKPluginsConfigObject,
   session?: PKSessionConfigObject,
   provider: ProviderOptionsObject,
-  playlist?: KPPlaylistObject,
+  playlist?: VPPlaylistObject,
   ui: UIOptionsObject,
   cast?: { [key: string]: any }
 };
 
-declare type PartialKPOptionsObject = {
+declare type PartialVPOptionsObject = {
   targetId: string,
   logLevel?: string,
   disableUserCache?: boolean,
@@ -28,7 +28,7 @@ declare type PartialKPOptionsObject = {
   cast?: { [key: string]: any }
 };
 
-declare type LegacyPartialKPOptionsObject = {
+declare type LegacyPartialVPOptionsObject = {
   targetId: string,
   logLevel?: string,
   disableUserCache?: boolean,

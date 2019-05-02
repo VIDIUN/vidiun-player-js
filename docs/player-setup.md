@@ -34,9 +34,9 @@ var config = {
 
 The following sections are examples of common (and important) configurations for the player setup.
 
-#### Example: Using a Kaltura Session (KS)
+#### Example: Using a Vidiun Session (VS)
 
-If you need to use a KS for your media requests, configure it inside your provider configuration:
+If you need to use a VS for your media requests, configure it inside your provider configuration:
 
 ```js
 var config = {
@@ -44,14 +44,14 @@ var config = {
   provider: {
     ...
     partnerId: YOUR_PARTNER_ID,
-    ks: 'YOUR_KS'
+    vs: 'YOUR_VS'
     ...
   }
   ...
 };
 ```
 
-See this [article](https://developer.kaltura.com/api-docs/VPaaS-API-Getting-Started/how-to-create-kaltura-session.html) to learn more about how to create a KS.
+See this [article](https://developer.vidiun.com/api-docs/VPaaS-API-Getting-Started/how-to-create-vidiun-session.html) to learn more about how to create a VS.
 
 #### Example: Using Server Configuration
 
@@ -96,7 +96,7 @@ var config = {
 To get your player instance, use the `setup` factory method and pass it your player configuration:
 
 ```js
-var player = KalturaPlayer.setup(config);
+var player = VidiunPlayer.setup(config);
 ```
 
 ## Next Step

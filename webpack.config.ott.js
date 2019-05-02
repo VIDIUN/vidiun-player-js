@@ -7,7 +7,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const webpackConfig = require('./webpack.config');
 const PROD = process.env.NODE_ENV === 'production';
 const playerType = 'ott';
-const configDocsUrl = 'https://github.com/kaltura/kaltura-player-js/blob/master/docs/configuration.md';
+const configDocsUrl = 'https://github.com/vidiun/vidiun-player-js/blob/master/docs/configuration.md';
 
 const plugins = [
   new webpack.DefinePlugin({
@@ -33,12 +33,12 @@ if (PROD) {
 }
 
 const entry = {
-  'kaltura-tv-player': 'index.js'
+  'vidiun-tv-player': 'index.js'
 };
 
 const alias = {
-  'playkit-js-providers': path.resolve('./node_modules/playkit-js-providers/dist/playkit-ott-provider'),
-  'playkit-js-analytics': path.resolve('./node_modules/@playkit-js/playkit-js-ott-analytics'),
+  'pakhshkit-js-providers': path.resolve('./node_modules/pakhshkit-js-providers/dist/pakhshkit-ott-provider'),
+  'pakhshkit-js-analytics': path.resolve('./node_modules/@pakhshkit-js/pakhshkit-js-ott-analytics'),
   'player-defaults': path.resolve('./src/ott/player-defaults'),
   poster: path.resolve('./src/ott/poster')
 };

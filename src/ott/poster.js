@@ -9,7 +9,7 @@
  * @private
  * @returns {void}
  */
-function addKalturaPoster(playerSources: PKSourcesConfigObject, mediaSources: ProviderMediaConfigSourcesObject, dimensions: Object): void {
+function addVidiunPoster(playerSources: PKSourcesConfigObject, mediaSources: ProviderMediaConfigSourcesObject, dimensions: Object): void {
   const playerPoster = playerSources.poster;
   const mediaConfigPoster = mediaSources.poster;
   const playerWidth = dimensions.width;
@@ -69,4 +69,4 @@ function selectPosterByPlayerDimensions(posters: Array<Object>, playerWidth: num
   return url;
 }
 
-export {addKalturaPoster};
+export {addVidiunPoster};
