@@ -4,14 +4,14 @@ When using embed codes, you can select from one of three options: Auto Embed, Dy
 
 ## Auto Embed
 
-Auto embed is the recommended embed code for the Kaltura Player. It uses precise code and is good for getting a player or widget onto the page quickly and easily without any runtime customizations.<br>
+Auto embed is the recommended embed code for the Vidiun Player. It uses precise code and is good for getting a player or widget onto the page quickly and easily without any runtime customizations.<br>
 
 Auto embed is optimized for packing a lots of resources into the initial request, allowing the player to be rendered quickly.
 <br>Here's how to use the auto embed code:
 
 ```html
 <div id="{TARGET_ID}" style="width: 640px;height: 360px"></div>
-<script type="text/javascript" src='https://cdnapisec.kaltura.com/p/{PARTNER_ID}/embedPlaykitJs/uiconf_id/{UICONF_ID}?autoembed=true&targetId={TARGET_ID}&entry_id={ENTRY_ID}&config[playback]={"autoplay":true}'></script>
+<script type="text/javascript" src='https://cdnapisec.vidiun.com/p/{PARTNER_ID}/embedPakhshkitJs/uiconf_id/{UICONF_ID}?autoembed=true&targetId={TARGET_ID}&entry_id={ENTRY_ID}&config[playback]={"autoplay":true}'></script>
 ```
 
 ## Dynamic Embed
@@ -22,10 +22,10 @@ Basic dynamic embed codes look like this:
 
 ```html
 <div id="{TARGET_ID}" style="width: 640px;height: 360px"></div>
-<script type="text/javascript" src="https://cdnapisec.kaltura.com/p/{PARTNER_ID}/embedPlaykitJs/uiconf_id/{UICONF_ID}"></script>
+<script type="text/javascript" src="https://cdnapisec.vidiun.com/p/{PARTNER_ID}/embedPakhshkitJs/uiconf_id/{UICONF_ID}"></script>
   <script type="text/javascript">
     try {
-      var kalturaPlayer = KalturaPlayer.setup({
+      var vidiunPlayer = VidiunPlayer.setup({
         targetId: "{TARGET_ID}",
         provider: {
           partnerId: {PARTNER_ID},
@@ -35,7 +35,7 @@ Basic dynamic embed codes look like this:
           autoplay: true
           }
       });
-      kalturaPlayer.loadMedia({entryId: '{ENTRY_ID}'});
+      vidiunPlayer.loadMedia({entryId: '{ENTRY_ID}'});
     } catch (e) {
       console.error(e.message)
     }
@@ -49,7 +49,7 @@ The iframe embed is good for sites that don't allow third-party JavaScript to be
 Note that if you use the iframe only embed mode, the page won't be able to access the player API:
 
 ```html
-<iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/{PARTNER_ID}/embedPlaykitJs/uiconf_id/{UICONF_ID}?iframeembed=true&entry_id={ENTRY_ID}&config[playback]={"autoplay":true}'
+<iframe type="text/javascript" src='https://cdnapisec.vidiun.com/p/{PARTNER_ID}/embedPakhshkitJs/uiconf_id/{UICONF_ID}?iframeembed=true&entry_id={ENTRY_ID}&config[playback]={"autoplay":true}'
    style="width: 640px;height: 360px" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0">
 </iframe>
 ```

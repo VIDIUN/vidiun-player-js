@@ -1,11 +1,11 @@
 import {
   addClientTag,
-  addKalturaParams,
+  addVidiunParams,
   addReferrer,
   getReferrer,
   handleSessionId,
   updateSessionIdInUrl
-} from '../../../../src/common/utils/kaltura-params';
+} from '../../../../src/common/utils/vidiun-params';
 
 class Player {
   set sessionId(s) {
@@ -15,12 +15,12 @@ class Player {
 
 let player = new Player();
 
-describe('addKalturaParams', function() {
+describe('addVidiunParams', function() {
   it('should add session id, referrer and client tag for playManifest source', function() {
     let source1 = {url: 'a/b/c/playmanifest/source'};
     let source2 = {url: 'd/e/f/playmanifest/source?a'};
     player.config = {session: {}, sources: {progressive: [source1, source2]}};
-    addKalturaParams(player, player.config);
+    addVidiunParams(player, player.config);
     source1.url.should.be.equal(
       'a/b/c/playmanifest/source?playSessionId=' +
         player.config.session.id +
@@ -43,7 +43,7 @@ describe('addKalturaParams', function() {
     let source1 = {url: 'a/b/c/PLAYMANIFEST/source'};
     let source2 = {url: 'd/e/f/PLAYMANIFEST/source?a'};
     player.config = {session: {}, sources: {progressive: [source1, source2]}};
-    addKalturaParams(player, player.config);
+    addVidiunParams(player, player.config);
     source1.url.should.be.equal(
       'a/b/c/PLAYMANIFEST/source?playSessionId=' +
         player.config.session.id +
@@ -64,7 +64,7 @@ describe('addKalturaParams', function() {
 
   it('should add nothing for no playManifest source', function() {
     let source1 = {url: 'a/b/c'};
-    addKalturaParams(player, {sources: {progressive: [source1]}});
+    addVidiunParams(player, {sources: {progressive: [source1]}});
     player.config.session.id.should.be.exist;
     source1.url.should.be.equal('a/b/c');
   });
@@ -72,7 +72,7 @@ describe('addKalturaParams', function() {
   it('should add nothing for no playManifest source', function() {
     let source1 = {url: 'a/b/c/PLAYMANIFEST/source'};
     source1.localSource = true;
-    addKalturaParams(player, {sources: {dash: [source1]}});
+    addVidiunParams(player, {sources: {dash: [source1]}});
     player.config.session.id.should.be.exist;
     source1.url.should.be.equal('a/b/c/PLAYMANIFEST/source');
   });

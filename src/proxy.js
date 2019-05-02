@@ -1,22 +1,22 @@
 // @flow
-import {KalturaPlayer} from './kaltura-player';
-import {FakeEventTarget} from '@playkit-js/playkit-js';
+import {VidiunPlayer} from './vidiun-player';
+import {FakeEventTarget} from '@pakhshkit-js/pakhshkit-js';
 
-const Players: KalturaPlayers = {};
+const Players: VidiunPlayers = {};
 /**
  * get all instantiated players
- * @returns {KalturaPlayers} - map of player ids and their respective instantiated player
+ * @returns {VidiunPlayers} - map of player ids and their respective instantiated player
  */
-function getPlayers(): KalturaPlayers {
+function getPlayers(): VidiunPlayers {
   return Players;
 }
 
 /**
  * get a player instance by id
  * @param {string} id - the player ID
- * @returns {KalturaPlayer | null} - the player if found by the supplied ID or null if key doesn't exist
+ * @returns {VidiunPlayer | null} - the player if found by the supplied ID or null if key doesn't exist
  */
-function getPlayer(id: string): ?KalturaPlayer {
+function getPlayer(id: string): ?VidiunPlayer {
   if (Players[id]) {
     return Players[id];
   }
@@ -25,37 +25,37 @@ function getPlayer(id: string): ?KalturaPlayer {
 
 const proxyIgnoredProps: Array<string> = ['_remotePlayer', '_listeners', '_uiWrapper'];
 const proxyHandler: Object = {
-  get(kp: KalturaPlayer, prop: string) {
+  get(vp: VidiunPlayer, prop: string) {
     if (prop === 'destroy') {
-      const playerId = kp.config.targetId;
+      const playerId = vp.config.targetId;
       delete Players[playerId];
     }
 
     if (prop in FakeEventTarget.prototype || proxyIgnoredProps.includes(prop)) {
       // $FlowFixMe
-      return kp[prop];
+      return vp[prop];
     }
-    if (kp._remotePlayer && prop in kp._remotePlayer) {
-      return kp._remotePlayer[prop];
+    if (vp._remotePlayer && prop in vp._remotePlayer) {
+      return vp._remotePlayer[prop];
     }
     // $FlowFixMe
-    return kp[prop];
+    return vp[prop];
   },
-  set(kp: KalturaPlayer, prop: string, value: any) {
-    if (kp._remotePlayer && !proxyIgnoredProps.includes(prop)) {
-      if (prop in kp._remotePlayer) {
-        kp._remotePlayer[prop] = value;
+  set(vp: VidiunPlayer, prop: string, value: any) {
+    if (vp._remotePlayer && !proxyIgnoredProps.includes(prop)) {
+      if (prop in vp._remotePlayer) {
+        vp._remotePlayer[prop] = value;
       }
     } else {
       // $FlowFixMe
-      kp[prop] = value;
+      vp[prop] = value;
     }
     return true;
   }
 };
 
-const getPlayerProxy = (options: KPOptionsObject) => {
-  const player = new KalturaPlayer(options);
+const getPlayerProxy = (options: VPOptionsObject) => {
+  const player = new VidiunPlayer(options);
   const proxy = new Proxy(player, proxyHandler);
   Players[options.targetId] = proxy;
   return proxy;

@@ -16,7 +16,7 @@ class Playlist {
     this._activeItemIndex = -1;
   }
 
-  configure(config: KPPlaylistObject) {
+  configure(config: VPPlaylistObject) {
     this._id = config.id;
     this._poster = config.poster;
     this._metadata = config.metadata;

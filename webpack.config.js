@@ -8,10 +8,10 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     filename: '[name].js',
-    library: 'KalturaPlayer',
+    library: 'VidiunPlayer',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    devtoolModuleFilenameTemplate: './kaltura-player/[resource-path]'
+    devtoolModuleFilenameTemplate: './vidiun-player/[resource-path]'
   },
   devtool: 'source-map',
   module: {
@@ -41,8 +41,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'playkit-js': path.resolve('./node_modules/@playkit-js/playkit-js'),
-      '@playkit-js/playkit-js': path.resolve('./node_modules/@playkit-js/playkit-js')
+      'pakhshkit-js': path.resolve('./node_modules/@pakhshkit-js/pakhshkit-js'),
+      '@pakhshkit-js/pakhshkit-js': path.resolve('./node_modules/@pakhshkit-js/pakhshkit-js')
     },
     modules: [path.resolve(__dirname, 'src'), 'node_modules']
   }

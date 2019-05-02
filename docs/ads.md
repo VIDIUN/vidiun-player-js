@@ -1,6 +1,6 @@
 # Ads
 
-The Kaltura TV Platform Player supports the addition of 3rd party monetization solutions via its plugin system. To allow easy integration and to support playback and analytics using any 3rd party solution, the player defines an advertizing framework using APIs and a standard event scheme.
+The Vidiun TV Platform Player supports the addition of 3rd party monetization solutions via its plugin system. To allow easy integration and to support playback and analytics using any 3rd party solution, the player defines an advertizing framework using APIs and a standard event scheme.
 
 Any plugin that adds support for ads is expected to follow the controller, timeline, and events scheme.
 This document details the ads controller, which allows controlling ad-related operations, the ad timeline (which explains how a typical order of events looks like), and the ad events and their associated payload.

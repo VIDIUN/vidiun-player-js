@@ -6,7 +6,7 @@ describe('getThumbSlicesUrl', function() {
       poster: '//my-thumb-service.com/p/1/thumbnail/entry_id/2/version/3'
     },
     session: {
-      ks: 'my-ks'
+      vs: 'my-vs'
     }
   };
 
@@ -16,11 +16,11 @@ describe('getThumbSlicesUrl', function() {
   };
 
   it('should get thumbnail slices url with default params', function() {
-    getThumbSlicesUrl(fakeData).should.equals(`${fakeData.sources.poster}/width/164/vid_slices/100/ks/${fakeData.session.ks}`);
+    getThumbSlicesUrl(fakeData).should.equals(`${fakeData.sources.poster}/width/164/vid_slices/100/vs/${fakeData.session.vs}`);
   });
 
   it('should get thumbnail slices url with the custom params', function() {
-    getThumbSlicesUrl(fakeData, fakeUIConfig).should.equals(`${fakeData.sources.poster}/width/100/vid_slices/200/ks/${fakeData.session.ks}`);
+    getThumbSlicesUrl(fakeData, fakeUIConfig).should.equals(`${fakeData.sources.poster}/width/100/vid_slices/200/vs/${fakeData.session.vs}`);
   });
 
   it('should get empty thumbnail slices url for non string given', function() {

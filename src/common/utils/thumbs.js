@@ -3,7 +3,7 @@ import evaluate from './evaluate';
 
 export const DEFAULT_THUMBS_WIDTH: number = 164;
 export const DEFAULT_THUMBS_SLICES: number = 100;
-const TEMPLATE: string = '{{thumbnailUrl}}/width/{{width}}/vid_slices/{{slices}}/ks/{{ks}}';
+const TEMPLATE: string = '{{thumbnailUrl}}/width/{{width}}/vid_slices/{{slices}}/vs/{{vs}}';
 
 /**
  * Builds thumbnail slices url for the ui.
@@ -20,7 +20,7 @@ export function getThumbSlicesUrl(mediaConfig: ProviderMediaConfigObject, seekba
       try {
         const model: Object = {
           thumbnailUrl: mediaConfigPoster,
-          ks: mediaConfig.session.ks,
+          vs: mediaConfig.session.vs,
           width: (seekbarConfig && seekbarConfig.thumbsWidth) || DEFAULT_THUMBS_WIDTH,
           slices: (seekbarConfig && seekbarConfig.thumbsSlices) || DEFAULT_THUMBS_SLICES
         };

@@ -1,5 +1,5 @@
 //@flow
-import {Utils} from '@playkit-js/playkit-js';
+import {Utils} from '@pakhshkit-js/pakhshkit-js';
 
 type dataStoreType = {[pluginName: string]: Object};
 const defaultConfig: dataStoreType = {
@@ -12,13 +12,13 @@ const defaultConfig: dataStoreType = {
     sessionId: '{{sessionId}}',
     uiConfId: '{{uiConfId}}'
   },
-  kanalytics: {
+  vanalytics: {
     playerVersion: '{{pVersion}}',
     playlistId: '{{playlistId}}',
     entryId: '{{entryId}}',
     entryType: '{{entryType}}',
     sessionId: '{{sessionId}}',
-    ks: '{{ks}}',
+    vs: '{{vs}}',
     uiConfId: '{{uiConfId}}',
     partnerId: '{{partnerId}}',
     referrer: '{{referrer}}'
@@ -31,7 +31,7 @@ const defaultConfig: dataStoreType = {
   },
   ottAnalytics: {
     entryId: '{{entryId}}',
-    ks: '{{ks}}',
+    vs: '{{vs}}',
     isAnonymous: '{{isAnonymous}}',
     partnerId: '{{partnerId}}',
     serviceUrl: '{{serviceUrl}}'
@@ -48,7 +48,7 @@ const defaultConfig: dataStoreType = {
     entryId: '{{entryId}}',
     entryType: '{{entryType}}',
     sessionId: '{{sessionId}}',
-    ks: '{{ks}}',
+    vs: '{{vs}}',
     uiConfId: '{{uiConfId}}',
     referrer: '{{referrer}}'
   },

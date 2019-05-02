@@ -1,9 +1,9 @@
-import {KalturaPlayer} from '../../src/kaltura-player';
+import {VidiunPlayer} from '../../src/vidiun-player';
 
 /**
- * @type {Object.<string, KalturaPlayer>}
- * @name KalturaPlayers
+ * @type {Object.<string, VidiunPlayer>}
+ * @name VidiunPlayers
  * @description a map of player instances by player ids
 */
-type _KalturaPlayers = {[id: string]: KalturaPlayer};
-declare type KalturaPlayers = _KalturaPlayers;
+type _VidiunPlayers = {[id: string]: VidiunPlayer};
+declare type VidiunPlayers = _VidiunPlayers;

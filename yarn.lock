@@ -2,25 +2,25 @@
 # yarn lockfile v1
 
 
-"@playkit-js/playkit-js-dash@^1.10.0":
+"@pakhshkit-js/pakhshkit-js-dash@^1.10.0":
   version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-dash/-/playkit-js-dash-1.10.0.tgz#5c7834ff2b4bbad2234925a6f9f3870ebb9d5aca"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-dash/-/pakhshkit-js-dash-1.10.0.tgz#5c7834ff2b4bbad2234925a6f9f3870ebb9d5aca"
 
 "@playkit-js/playkit-js-hls@^1.13.0":
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-hls/-/playkit-js-hls-1.13.0.tgz#f39cee0970686dbe22d73a7cc96fdbe82d5c5ae1"
 
-"@playkit-js/playkit-js-kanalytics@^0.10.0":
+"@pakhshkit-js/pakhshkit-js-vanalytics@^0.10.0":
   version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-kanalytics/-/playkit-js-kanalytics-0.10.0.tgz#709b3f7589cb6ad0e511a3c1b3da26b51d35a903"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-vanalytics/-/pakhshkit-js-vanalytics-0.10.0.tgz#709b3f7589cb6ad0e511a3c1b3da26b51d35a903"
 
-"@playkit-js/playkit-js-kava@^0.7.1":
+"@pakhshkit-js/pakhshkit-js-kava@^0.7.1":
   version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-kava/-/playkit-js-kava-0.7.1.tgz#c1ef6fc78aed044cd0f3c4dcb98a1d2f41c41cf9"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-kava/-/pakhshkit-js-kava-0.7.1.tgz#c1ef6fc78aed044cd0f3c4dcb98a1d2f41c41cf9"
 
-"@playkit-js/playkit-js-ott-analytics@^0.5.0":
+"@pakhshkit-js/pakhshkit-js-ott-analytics@^0.5.0":
   version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-ott-analytics/-/playkit-js-ott-analytics-0.5.0.tgz#09d903adf6c9389d86f84e32eeb8bf68351908a2"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ott-analytics/-/pakhshkit-js-ott-analytics-0.5.0.tgz#09d903adf6c9389d86f84e32eeb8bf68351908a2"
 
 "@playkit-js/playkit-js-ui@^0.39.0":
   version "0.39.0"
@@ -6322,9 +6322,9 @@ pkginfo@0.x.x:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
 
-"playkit-js-env-manager@https://github.com/kaltura/playkit-js-env-manager.git#v3.3.2":
+"pakhshkit-js-env-manager@https://github.com/vidiun/pakhshkit-js-env-manager.git#v3.3.2":
   version "3.3.2"
-  resolved "https://github.com/kaltura/playkit-js-env-manager.git#0a3821cafd76b941df3ed42f162afba1c03a230d"
+  resolved "https://github.com/vidiun/pakhshkit-js-env-manager.git#0a3821cafd76b941df3ed42f162afba1c03a230d"
   dependencies:
     chalk "^2.1.0"
     fs "0.0.1-security"
@@ -6333,9 +6333,9 @@ pkginfo@0.x.x:
     prompt "^1.0.0"
     shelljs "^0.7.8"
 
-"playkit-js-providers@https://github.com/kaltura/playkit-js-providers.git#v2.18.1":
+"pakhshkit-js-providers@https://github.com/vidiun/pakhshkit-js-providers.git#v2.18.1":
   version "2.18.1"
-  resolved "https://github.com/kaltura/playkit-js-providers.git#07d7fa8266656329eb8981d14829702713c6ee1d"
+  resolved "https://github.com/vidiun/pakhshkit-js-providers.git#07d7fa8266656329eb8981d14829702713c6ee1d"
   dependencies:
     js-logger "^1.3.0"
 
@@ -7504,9 +7504,9 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-"shaka-player@https://github.com/kaltura/shaka-player.git#v2.3.3-k-5":
+"shaka-player@https://github.com/vidiun/shaka-player.git#v2.3.3-k-5":
   version "2.3.3"
-  resolved "https://github.com/kaltura/shaka-player.git#3658b46869799f52863a7ed7b84bee4701d8c400"
+  resolved "https://github.com/vidiun/shaka-player.git#3658b46869799f52863a7ed7b84bee4701d8c400"
 
 shebang-command@^1.2.0:
   version "1.2.0"

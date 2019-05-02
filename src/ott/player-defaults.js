@@ -1,13 +1,13 @@
 // @flow
-import {Utils} from '@playkit-js/playkit-js';
+import {Utils} from '@pakhshkit-js/pakhshkit-js';
 
 /**
  * Sets the default analytics plugin for the ott player.
- * @param {KPOptionsObject} options - The player config.
+ * @param {VPOptionsObject} options - The player config.
  * @private
  * @returns {void}
  */
-export function setDefaultAnalyticsPlugin(options: KPOptionsObject): void {
+export function setDefaultAnalyticsPlugin(options: VPOptionsObject): void {
   const kavaPlugin = Utils.Object.getPropertyPath(options, 'plugins.kava');
   if (!kavaPlugin) {
     Utils.Object.mergeDeep(options, {

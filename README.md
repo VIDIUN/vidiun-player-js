@@ -1,36 +1,36 @@
-# Kaltura Player JS Platform - Cloud TV and OVP Media Players Based on the [PlayKit JS Player]
+# Vidiun Player JS Platform - Cloud TV and OVP Media Players Based on the [PakhshKit JS Player]
 
-[![Build Status](https://travis-ci.org/kaltura/kaltura-player-js.svg?branch=master)](https://travis-ci.org/kaltura/kaltura-player-js)
+[![Build Status](https://travis-ci.org/vidiun/vidiun-player-js.svg?branch=master)](https://travis-ci.org/vidiun/vidiun-player-js)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-The Kaltura Player utilizes a highly modular approach for creating a powerful media player.
+The Vidiun Player utilizes a highly modular approach for creating a powerful media player.
 Each functionality of the player is isolated into separate packages, which are designed to deliver a specific set of abilities.
 This approach enables extensibility, simplicity and easy maintenance.
 
-The Kaltura Player integrates:
+The Vidiun Player integrates:
 
-- [PlayKit JS ](https://github.com/kaltura/playkit-js) - The core library.
-- [PlayKit JS UI](https://github.com/kaltura/playkit-js-ui) - The UI framework.
-- [PlayKit JS DASH](https://github.com/kaltura/playkit-js-dash) and [PlayKit JS HLS](https://github.com/kaltura/playkit-js-hls) for HLS & MPEG-DASH media source extensions capabilities.
-- [PlayKit JS IMA](https://github.com/kaltura/playkit-js-ima) for ads and monetization.
-- [PlayKit JS Providers](https://github.com/kaltura/playkit-js-providers) as the backend media providers.
-- [PlayKit JS Youbora](https://github.com/kaltura/playkit-js-youbora), [PlayKit JS KAnalytics](https://github.com/kaltura/playkit-js-kanalytics), [PlayKit JS KAVA](https://github.com/kaltura/playkit-js-kava), and [PlayKit JS OTT Analytics](https://github.com/kaltura/playkit-js-ott-analytics) as the different analytics plugins.
+- [PakhshKit JS ](https://github.com/vidiun/pakhshkit-js) - The core library.
+- [PakhshKit JS UI](https://github.com/vidiun/pakhshkit-js-ui) - The UI framework.
+- [PakhshKit JS DASH](https://github.com/vidiun/pakhshkit-js-dash) and [PakhshKit JS HLS](https://github.com/vidiun/pakhshkit-js-hls) for HLS & MPEG-DASH media source extensions capabilities.
+- [PakhshKit JS IMA](https://github.com/vidiun/pakhshkit-js-ima) for ads and monetization.
+- [PakhshKit JS Providers](https://github.com/vidiun/pakhshkit-js-providers) as the backend media providers.
+- [PakhshKit JS Youbora](https://github.com/vidiun/pakhshkit-js-youbora), [PakhshKit JS VAnalytics](https://github.com/vidiun/pakhshkit-js-vanalytics), [PakhshKit JS KAVA](https://github.com/vidiun/pakhshkit-js-kava), and [PakhshKit JS OTT Analytics](https://github.com/vidiun/pakhshkit-js-ott-analytics) as the different analytics plugins.
 
-The Kaltura Player exposes two different players: the _Kaltura OVP Player_ and _Kaltura Cloud TV Player_. Each player integrates its related packages, as you can see in the following table:
+The Vidiun Player exposes two different players: the _Vidiun OVP Player_ and _Vidiun Cloud TV Player_. Each player integrates its related packages, as you can see in the following table:
 
-|                 | PlayKit JS | PlayKit JS Providers | PlayKit JS UI | PlayKit JS DASH | PlayKit JS HLS | PlayKit JS Youbora | PlayKit JS KAnalytics | PlayKit JS OTT Analytics | PlayKit JS KAVA |
+|                 | PakhshKit JS | PakhshKit JS Providers | PakhshKit JS UI | PakhshKit JS DASH | PakhshKit JS HLS | PakhshKit JS Youbora | PakhshKit JS VAnalytics | PakhshKit JS OTT Analytics | PakhshKit JS KAVA |
 | --------------- | ---------- | -------------------- | ------------- | --------------- | -------------- | ------------------ | --------------------- | ------------------------ | --------------- |
 | OVP Player      | V          | OVP                  | V             | V               | V              | V                  | V                     |                          | V               |  |
 | Cloud TV Player | V          | OTT                  | V             | V               | V              | V                  |                       | V                        | V (\*)          |
 
 > \* Needs to be configured.
 
-The Kaltura Player is written in [ECMAScript6], statically analysed using [Flow] and transpiled in ECMAScript5 using [Babel].
+The Vidiun Player is written in [ECMAScript6], statically analysed using [Flow] and transpiled in ECMAScript5 using [Babel].
 
 [flow]: https://flow.org/
 [ecmascript6]: https://github.com/ericdouglas/ES6-Learning#articles--tutorials
 [babel]: https://babeljs.io
-[playkit js player]: https://github.com/kaltura/playkit-js
+[pakhshkit js player]: https://github.com/vidiun/pakhshkit-js
 
 ## Getting Started
 
@@ -41,8 +41,8 @@ First, clone and run [yarn] to install dependencies:
 [yarn]: https://yarnpkg.com/lang/en/
 
 ```
-git clone https://github.com/kaltura/kaltura-player-js.git
-cd kaltura-player-js
+git clone https://github.com/vidiun/vidiun-player-js.git
+cd vidiun-player-js
 yarn install
 ```
 
@@ -98,11 +98,11 @@ TBD
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/kaltura/platform-install-packages/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/vidiun/platform-install-packages/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/kaltura/playkit-js-providers/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/vidiun/pakhshkit-js-providers/tags).
 
 ## License
 

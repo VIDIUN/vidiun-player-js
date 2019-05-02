@@ -7,7 +7,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const webpackConfig = require('./webpack.config');
 const PROD = process.env.NODE_ENV === 'production';
 const playerType = 'ovp';
-const configDocsUrl = 'https://github.com/kaltura/kaltura-player-js/blob/master/docs/configuration.md';
+const configDocsUrl = 'https://github.com/vidiun/vidiun-player-js/blob/master/docs/configuration.md';
 
 const plugins = [
   new webpack.DefinePlugin({
@@ -33,12 +33,12 @@ if (PROD) {
 }
 
 const entry = {
-  'kaltura-ovp-player': 'index.js'
+  'vidiun-ovp-player': 'index.js'
 };
 
 const alias = {
-  'playkit-js-providers': path.resolve('./node_modules/playkit-js-providers/dist/playkit-ovp-provider'),
-  'playkit-js-analytics': path.resolve('./node_modules/@playkit-js/playkit-js-kanalytics'),
+  'pakhshkit-js-providers': path.resolve('./node_modules/pakhshkit-js-providers/dist/pakhshkit-ovp-provider'),
+  'pakhshkit-js-analytics': path.resolve('./node_modules/@pakhshkit-js/pakhshkit-js-vanalytics'),
   'player-defaults': path.resolve('./src/ovp/player-defaults'),
   poster: path.resolve('./src/ovp/poster')
 };

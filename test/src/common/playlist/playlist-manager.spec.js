@@ -1,12 +1,12 @@
-import {KalturaPlayer} from '../../../../src/kaltura-player';
+import {VidiunPlayer} from '../../../../src/vidiun-player';
 import {PlaylistManager} from '../../../../src/common/playlist/playlist-manager';
 import * as MediaMockData from '../../mock-data/media';
 import * as PlaylistMockData from '../../mock-data/playlist';
-import {FakeEvent} from '@playkit-js/playkit-js';
+import {FakeEvent} from '@pakhshkit-js/pakhshkit-js';
 import {PlaylistEventType} from '../../../../src/common/playlist/playlist-event-type';
 
 describe('PlaylistManager', function() {
-  let kalturaPlayer, playlistManager, sandbox;
+  let vidiunPlayer, playlistManager, sandbox;
   const config = {
     ui: {},
     provider: {},
@@ -17,18 +17,18 @@ describe('PlaylistManager', function() {
 
   before(function() {
     sandbox = sinon.sandbox.create();
-    kalturaPlayer = new KalturaPlayer(config);
+    vidiunPlayer = new VidiunPlayer(config);
   });
 
   beforeEach(function() {
-    playlistManager = new PlaylistManager(kalturaPlayer, config);
+    playlistManager = new PlaylistManager(vidiunPlayer, config);
   });
 
   afterEach(function() {
     playlistManager.reset();
     playlistManager = null;
-    kalturaPlayer._eventManager.removeAll();
-    kalturaPlayer.reset();
+    vidiunPlayer._eventManager.removeAll();
+    vidiunPlayer.reset();
   });
 
   describe('configure', function() {
@@ -58,14 +58,14 @@ describe('PlaylistManager', function() {
     });
 
     it('should load playlist by config and fire event', function() {
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_LOADED, event => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_LOADED, event => {
         event.payload.playlist.id.should.equal('b1234');
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
     });
 
     it('should not load playlist by config and fire event is no items', function(done) {
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_LOADED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_LOADED, () => {
         done(new Error('fail'));
       });
       playlistManager.configure();
@@ -73,7 +73,7 @@ describe('PlaylistManager', function() {
     });
 
     it('should not load playlist by config and fire event is no sources', function(done) {
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_LOADED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_LOADED, () => {
         done(new Error('fail'));
       });
       playlistManager.configure({items: [{}]});
@@ -89,7 +89,7 @@ describe('PlaylistManager', function() {
     });
 
     it('should play the first item', function(done) {
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
         done();
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
@@ -97,21 +97,21 @@ describe('PlaylistManager', function() {
 
     it('should play next on ended when auto continue is true', function(done) {
       let eventCounter = 0;
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
         eventCounter++;
         if (eventCounter === 2) {
           done();
         }
         playlistManager._options.autoContinue = true;
         playlistManager._playerOptions.ui.disable = true;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
     });
 
     it('should play next on ended when loop is true', function(done) {
       let eventCounter = 0;
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
         eventCounter++;
         if (eventCounter === 2) {
           done();
@@ -119,36 +119,36 @@ describe('PlaylistManager', function() {
         playlistManager._options.autoContinue = false;
         playlistManager._options.loop = true;
         playlistManager._playerOptions.ui.disable = true;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
     });
 
     it('should not play next on ended when auto continue and loop is false', function(done) {
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
         done();
         playlistManager._options.autoContinue = false;
         playlistManager._options.loop = false;
         playlistManager._playerOptions.ui.disable = true;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
     });
 
     it('should not play next on ended when ui is enabled', function(done) {
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
         done();
         playlistManager._options.autoContinue = true;
         playlistManager._options.loop = true;
         playlistManager._playerOptions.ui.disable = false;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
     });
 
     it('should play next on ended when ui is enabled but countdown is hidden', function(done) {
       let eventCounter = 0;
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
         eventCounter++;
         if (eventCounter === 2) {
           done();
@@ -157,7 +157,7 @@ describe('PlaylistManager', function() {
         playlistManager._options.loop = true;
         playlistManager._playerOptions.ui.disable = false;
         playlistManager._countdown.showing = false;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
     });
@@ -167,11 +167,11 @@ describe('PlaylistManager', function() {
         playlistManager._options.autoContinue = true;
         playlistManager._options.loop = true;
         playlistManager._playerOptions.ui.disable = true;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       };
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ENDED, () => {
-        kalturaPlayer._eventManager.unlisten(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ENDED, () => {
+        vidiunPlayer._eventManager.unlisten(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
         done();
       });
       playlistManager.configure(PlaylistMockData.playlistByConfig);
@@ -182,12 +182,12 @@ describe('PlaylistManager', function() {
         playlistManager._options.autoContinue = false;
         playlistManager._options.loop = true;
         playlistManager._playerOptions.ui.disable = true;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       };
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ENDED, () => {
-        kalturaPlayer._eventManager.unlisten(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
-        kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, e => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ENDED, () => {
+        vidiunPlayer._eventManager.unlisten(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
+        vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, e => {
           e.payload.index.should.equal(0);
           done();
         });
@@ -200,13 +200,13 @@ describe('PlaylistManager', function() {
         playlistManager._options.autoContinue = true;
         playlistManager._options.loop = false;
         playlistManager._playerOptions.ui.disable = true;
-        kalturaPlayer.dispatchEvent(new FakeEvent(kalturaPlayer.Event.Core.PLAYBACK_ENDED));
+        vidiunPlayer.dispatchEvent(new FakeEvent(vidiunPlayer.Event.Core.PLAYBACK_ENDED));
       };
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
-      kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ENDED, () => {
-        kalturaPlayer._eventManager.unlisten(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
+      vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ENDED, () => {
+        vidiunPlayer._eventManager.unlisten(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, onItemChanged);
         done();
-        kalturaPlayer._eventManager.listen(kalturaPlayer, kalturaPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
+        vidiunPlayer._eventManager.listen(vidiunPlayer, vidiunPlayer.Event.Playlist.PLAYLIST_ITEM_CHANGED, () => {
           done(new Error('fail'));
         });
       });
@@ -247,7 +247,7 @@ describe('PlaylistManager', function() {
       playlistManager.load(PlaylistMockData.playlistByID, playlistConfig, {entries: [{entryId: '123'}]});
       playlistManager._playlist.id.should.equal('0_wckoqjnn');
       playlistManager._playlist.metadata.name.should.equal('Playlist_VOD_Only');
-      playlistManager._playlist.poster.should.equal('http://cdntesting.qa.mkaltura.com/p/1091/sp/0/thumbnail/entry_id/0_wckoqjnn/version/100162');
+      playlistManager._playlist.poster.should.equal('http://cdntesting.qa.mvidiun.com/p/1091/sp/0/thumbnail/entry_id/0_wckoqjnn/version/100162');
       playlistManager._playlist.items[0]._sources.id.should.equal('0_fu4ifhie');
       playlistManager._playlist.items[0]._config.countdown.timeToShow.should.be.equal(40);
       playlistManager._playlist.items[0]._config.countdown.duration.should.be.equal(5);
@@ -364,7 +364,7 @@ describe('PlaylistManager', function() {
 
   describe('playNext', function() {
     before(function() {
-      sinon.stub(kalturaPlayer, 'loadMedia').callsFake(function({entryId}) {
+      sinon.stub(vidiunPlayer, 'loadMedia').callsFake(function({entryId}) {
         return Promise.resolve(MediaMockData.MediaConfig[entryId]);
       });
     });
@@ -378,14 +378,14 @@ describe('PlaylistManager', function() {
     });
 
     it('should call playNext automatically once the playlist loaded', function(done) {
-      kalturaPlayer._eventManager.listen(kalturaPlayer, PlaylistEventType.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, PlaylistEventType.PLAYLIST_ITEM_CHANGED, () => {
         done();
       });
     });
 
     it('should call playNext programmatically', function(done) {
       let eventCounter = 0;
-      kalturaPlayer._eventManager.listen(kalturaPlayer, PlaylistEventType.PLAYLIST_ITEM_CHANGED, () => {
+      vidiunPlayer._eventManager.listen(vidiunPlayer, PlaylistEventType.PLAYLIST_ITEM_CHANGED, () => {
         if (eventCounter === 2) {
           done();
         }

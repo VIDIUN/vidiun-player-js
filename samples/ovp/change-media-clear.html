@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>Title</title>
   <link rel="stylesheet" type="text/css" href="./style.css"/>
-  <script src="./kaltura-ovp-player.js" type="text/javascript"></script>
+  <script src="./vidiun-ovp-player.js" type="text/javascript"></script>
 </head>
 <body>
 <button onclick="changeMediaHls()">Change Media -> Hls</button>
@@ -18,20 +18,20 @@
     provider: {
       partnerId: 1091,
       env: {
-        cdnUrl: "http://qa-apache-php7.dev.kaltura.com/",
-        serviceUrl: "http://qa-apache-php7.dev.kaltura.com/api_v3"
+        cdnUrl: "http://qa-apache-php7.dev.vidiun.com/",
+        serviceUrl: "http://qa-apache-php7.dev.vidiun.com/api_v3"
       }
     }
   };
   try {
-    var kalturaPlayer = KalturaPlayer.setup(config);
-    kalturaPlayer.loadMedia({entryId: '0_wifqaipd'});
+    var vidiunPlayer = VidiunPlayer.setup(config);
+    vidiunPlayer.loadMedia({entryId: '0_wifqaipd'});
 
-    kalturaPlayer.addEventListener(kalturaPlayer.Event.CHANGE_SOURCE_STARTED, () => {
+    vidiunPlayer.addEventListener(vidiunPlayer.Event.CHANGE_SOURCE_STARTED, () => {
       console.log("TEST: CHANGE_SOURCE_STARTED");
     });
 
-    kalturaPlayer.addEventListener(kalturaPlayer.Event.CHANGE_SOURCE_ENDED, () => {
+    vidiunPlayer.addEventListener(vidiunPlayer.Event.CHANGE_SOURCE_ENDED, () => {
       console.log("TEST: CHANGE_SOURCE_ENDED");
     });
   } catch (e) {
@@ -39,7 +39,7 @@
   }
 
   function changeMediaHls() {
-    kalturaPlayer.configure({
+    vidiunPlayer.configure({
       playback: {
         autoplay: true,
         streamPriority: [{
@@ -48,15 +48,15 @@
         }]
       }
     });
-    kalturaPlayer.loadMedia({entryId: '0_wifqaipd'}).then(() => {
-      kalturaPlayer.ready().then(() => {
+    vidiunPlayer.loadMedia({entryId: '0_wifqaipd'}).then(() => {
+      vidiunPlayer.ready().then(() => {
         console.log("TEST: ready HLS");
       });
     });
   }
 
   function changeMediaDash() {
-    kalturaPlayer.configure({
+    vidiunPlayer.configure({
       playback: {
         autoplay: true,
         streamPriority: [{
@@ -65,15 +65,15 @@
         }]
       }
     });
-    kalturaPlayer.loadMedia({entryId: '0_wifqaipd'}).then(() => {
-      kalturaPlayer.ready().then(() => {
+    vidiunPlayer.loadMedia({entryId: '0_wifqaipd'}).then(() => {
+      vidiunPlayer.ready().then(() => {
         console.log("TEST: ready DASH");
       });
     });
   }
 
   function changeMediaProgressive() {
-    kalturaPlayer.configure({
+    vidiunPlayer.configure({
       playback: {
         autoplay: true,
         streamPriority: [{
@@ -82,8 +82,8 @@
         }]
       }
     });
-    kalturaPlayer.loadMedia({entryId: '0_wifqaipd'}).then(() => {
-      kalturaPlayer.ready().then(() => {
+    vidiunPlayer.loadMedia({entryId: '0_wifqaipd'}).then(() => {
+      vidiunPlayer.ready().then(() => {
         console.log("TEST: ready PROGRESSIVE");
       });
     });

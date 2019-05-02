@@ -1,6 +1,6 @@
 # Managing Tracks on the Player
 
-The Kaltura Player uses a comprehensive API to handle all kind of tracks, including video (bitrate), audio, and text (language) tracks.
+The Vidiun Player uses a comprehensive API to handle all kind of tracks, including video (bitrate), audio, and text (language) tracks.
 <br>This document shows how to use the API to managing player tracks.
 
 - [Tracks Availability](#tracks-availability)
@@ -217,4 +217,4 @@ player.hideTextTrack();
 >
 > A Text Track has language and label properties. The label is set by the label property in the manifest.
 > However, in case the manifest does not have a label property - the language property will be set as the tracks label.
-> You can set a custom label to a Text Track - read about it [here](https://github.com/kaltura/playkit-js/blob/master/docs/configuration.md#configcustomlabels)
+> You can set a custom label to a Text Track - read about it [here](https://github.com/vidiun/pakhshkit-js/blob/master/docs/configuration.md#configcustomlabels)

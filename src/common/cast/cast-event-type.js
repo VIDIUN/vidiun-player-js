@@ -1,5 +1,5 @@
 // @flow
-const namespace = 'kaltura-player';
+const namespace = 'vidiun-player';
 
 /**
  * @const {Object} CastEventType
@@ -13,7 +13,7 @@ const namespace = 'kaltura-player';
  * 5. CAST_SESSION_ENDED
  * @example
  * // How to use
- * player.addEventListener(KalturaPlayer.cast.CastEventType.CAST_SESSION_STARTED, e => {
+ * player.addEventListener(VidiunPlayer.cast.CastEventType.CAST_SESSION_STARTED, e => {
  *   console.log(e.session);
  * };
  */

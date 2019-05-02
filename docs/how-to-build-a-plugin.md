@@ -57,7 +57,7 @@ Lets take a look at the `BasePlugin` API.
 | Name     | Type                  | Description     |
 | -------- | --------------------- | --------------- |
 | `name`   | `string`              | Plugin name     |
-| `player` | `playkit.core.Player` | Player instance |
+| `player` | `pakhshkit.core.Player` | Player instance |
 | `config` | `Object`              | Plugin config   |
 
 #
@@ -70,7 +70,7 @@ Lets take a look at the `BasePlugin` API.
 >
 > #### `player`
 >
-> Type: `playkit.core.Player` - The player instance.
+> Type: `pakhshkit.core.Player` - The player instance.
 >
 > #### `name`
 >
@@ -78,11 +78,11 @@ Lets take a look at the `BasePlugin` API.
 >
 > #### `logger`
 >
-> Type: `playkit.core.Logger` - The logger of the plugin.
+> Type: `pakhshkit.core.Logger` - The logger of the plugin.
 >
 > #### `eventManager`
 >
-> Type: `playkit.core.EventManager` - The plugin event manager.
+> Type: `pakhshkit.core.EventManager` - The plugin event manager.
 
 #
 
@@ -141,7 +141,7 @@ Returns: `void` - Dispatches an event from the player.
 
 | Name     | Type                  | Description     |
 | -------- | --------------------- | --------------- |
-| `player` | `playkit.core.Player` | Player instance |
+| `player` | `pakhshkit.core.Player` | Player instance |
 
 Returns: `boolean` - Whether the plugin is valid or not.
 
@@ -188,7 +188,7 @@ Now, lets take a look at the `registerPlugin` API.
 | Name          | Type                      | Description      |
 | ------------- | ------------------------- | ---------------- |
 | `pluginName`  | `string`                  | The plugin name  |
-| `pluginClass` | `playkit.core.BasePlugin` | The plugin class |
+| `pluginClass` | `pakhshkit.core.BasePlugin` | The plugin class |
 
 # Writing a Basic Plugin
 
@@ -253,18 +253,18 @@ class MyPlugin {
 
 ```js
 var MyPlugin = function(name, player, config) {
-  KalturaPlayer.core.BasePlugin.call(this, name, player, config);
+  VidiunPlayer.core.BasePlugin.call(this, name, player, config);
 };
 
-MyPlugin.createPlugin = KalturaPlayer.core.BasePlugin.createPlugin;
+MyPlugin.createPlugin = VidiunPlayer.core.BasePlugin.createPlugin;
 
-MyPlugin.prototype = new KalturaPlayer.core.BasePlugin();
+MyPlugin.prototype = new VidiunPlayer.core.BasePlugin();
 ```
 
 ### _ES6_
 
 ```typescript
-class MyPlugin extends KalturaPlayer.core.BasePlugin {
+class MyPlugin extends VidiunPlayer.core.BasePlugin {
   constructor(name, player, config) {
     super(name, player, config);
   }
@@ -279,12 +279,12 @@ In **_my-plugin.js_**, add the necessary methods and properties to override as e
 
 ```js
 var MyPlugin = function(name, player, config) {
-  KalturaPlayer.core.BasePlugin.call(this, name, player, config);
+  VidiunPlayer.core.BasePlugin.call(this, name, player, config);
 };
 
-MyPlugin.createPlugin = KalturaPlayer.core.BasePlugin.createPlugin;
+MyPlugin.createPlugin = VidiunPlayer.core.BasePlugin.createPlugin;
 
-MyPlugin.prototype = new KalturaPlayer.core.BasePlugin();
+MyPlugin.prototype = new VidiunPlayer.core.BasePlugin();
 
 MyPlugin.defaultConfig = {};
 
@@ -298,7 +298,7 @@ MyPlugin.prototype.reset = function() {};
 ### _ES6_
 
 ```typescript
-class MyPlugin extends KalturaPlayer.core.BasePlugin {
+class MyPlugin extends VidiunPlayer.core.BasePlugin {
   static defaultConfig = {};
 
   static isValid(player) {}
@@ -321,15 +321,15 @@ To see the plugin in action, lets fill in some simple implementations:
 
 ```js
 var MyPlugin = function(name, player, config) {
-  KalturaPlayer.core.BasePlugin.call(this, name, player, config);
+  VidiunPlayer.core.BasePlugin.call(this, name, player, config);
   this.logger.debug('Hello from ' + this.getName() + ' plugin constructor!');
   this._myCollection = [this.config.myValue];
   this._addBindings();
 };
 
-MyPlugin.createPlugin = KalturaPlayer.core.BasePlugin.createPlugin;
+MyPlugin.createPlugin = VidiunPlayer.core.BasePlugin.createPlugin;
 
-MyPlugin.prototype = new KalturaPlayer.core.BasePlugin();
+MyPlugin.prototype = new VidiunPlayer.core.BasePlugin();
 
 MyPlugin.defaultConfig = {
   myValue: 1
@@ -365,7 +365,7 @@ MyPlugin.prototype._addBindings = function() {
 ### _ES6_
 
 ```typescript
-class MyPlugin extends KalturaPlayer.core.BasePlugin {
+class MyPlugin extends VidiunPlayer.core.BasePlugin {
   _myCollection;
 
   static defaultConfig = {
@@ -418,7 +418,7 @@ Use the factory `registerPlugin` method to register your plugin in the player fr
 </head>
 <body>
 <script>
-	KalturaPlayer.core.registerPlugin("myPlugin", MyPlugin);
+	VidiunPlayer.core.registerPlugin("myPlugin", MyPlugin);
 </script>
 </body>
 </html>
@@ -469,7 +469,7 @@ c . Setup code.
 
 ```js
 var mediaInfo = {entryId: 'YOUR_ENTRY_ID'};
-var player = KalturaPlayer.setup(config);
+var player = VidiunPlayer.setup(config);
 player.loadMedia(mediaInfo).then(function() {
   player.play();
 });
@@ -488,7 +488,7 @@ player.loadMedia(mediaInfo).then(function() {
 </head>
 <body>
 <script>
-KalturaPlayer.core.registerPlugin("myPlugin", MyPlugin);
+VidiunPlayer.core.registerPlugin("myPlugin", MyPlugin);
 
 var config = {
     logLevel: "DEBUG",
@@ -504,7 +504,7 @@ var config = {
 };
 
 var mediaInfo = {entryId: "YOUR_ENTRY_ID"};
-var player = KalturaPlayer.setup(config);
+var player = VidiunPlayer.setup(config);
 player.loadMedia(mediaInfo).then(function() {
   player.play();
 });
@@ -518,5 +518,5 @@ player.loadMedia(mediaInfo).then(function() {
 # Writing an Advanced Plugin
 
 An advanced plugin is one that is built as a self project and handles a version, tests, documentation, dev scripts and so on.
-All of the options described above can be achieved by using the `PlayKit JS Plugin Generator` tool.
-<br>Read [here](https://github.com/kaltura/playkit-js-plugin-generator) to learn more.
+All of the options described above can be achieved by using the `PakhshKit JS Plugin Generator` tool.
+<br>Read [here](https://github.com/vidiun/pakhshkit-js-plugin-generator) to learn more.

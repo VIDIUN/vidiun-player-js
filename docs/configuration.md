@@ -6,7 +6,7 @@ Player configuration parameters are provided whenever a player instance is creat
 var config = {
   // Configuration here
 };
-var player = KalturaPlayer.setup(config);
+var player = VidiunPlayer.setup(config);
 ```
 
 #### Configuration Structure
@@ -20,7 +20,7 @@ The configuration uses the following structure:
   disableUserCache: boolean,
   playback: PKPlaybackConfigObject,
   sources: PKSourcesConfigObject,
-  playlist: KPPlaylisyObject,
+  playlist: VPPlaylisyObject,
   plugins: PKPluginsConfigObject,
   session: PKSessionConfigObject,
   provider: ProviderOptionsObject,
@@ -67,31 +67,31 @@ The configuration uses the following structure:
 
 > ### config.playback
 >
-> ##### Type: [PKPlaybackConfigObject](https://github.com/kaltura/playkit-js/blob/master/docs/configuration.md#configplayback)
+> ##### Type: [PKPlaybackConfigObject](https://github.com/vidiun/pakhshkit-js/blob/master/docs/configuration.md#configplayback)
 >
 > ##### Description: Defines the playback configuration.
 >
 > ### config.sources
 >
-> ##### Type: [PKSourcesConfigObject](https://github.com/kaltura/playkit-js/blob/master/docs/configuration.md#configsources)
+> ##### Type: [PKSourcesConfigObject](https://github.com/vidiun/pakhshkit-js/blob/master/docs/configuration.md#configsources)
 >
 > ##### Description: Defines the sources configuration.
 >
 > ### config.playlist
 >
-> ##### Type: [KPPlaylisyObject](./api.md#kpplaylistobject)
+> ##### Type: [VPPlaylisyObject](./api.md#vpplaylistobject)
 >
 > ##### Description: Defines the playlist configuration.
 >
 > ### config.plugins
 >
-> ##### Type: [PKPluginsConfigObject](https://github.com/kaltura/playkit-js/blob/master/docs/configuration.md#configplugins)
+> ##### Type: [PKPluginsConfigObject](https://github.com/vidiun/pakhshkit-js/blob/master/docs/configuration.md#configplugins)
 >
 > ##### Description: Defines the plugins configuration.
 >
 > ### config.session
 >
-> ##### Type: [PKSessionConfigObject](https://github.com/kaltura/playkit-js/blob/master/docs/configuration.md#configsession)
+> ##### Type: [PKSessionConfigObject](https://github.com/vidiun/pakhshkit-js/blob/master/docs/configuration.md#configsession)
 >
 > ##### Description: Defines the session configuration.
 
@@ -99,7 +99,7 @@ The configuration uses the following structure:
 
 > ### config.provider
 >
-> ##### Type: [ProviderOptionsObject](https://github.com/kaltura/playkit-js-providers/blob/master/docs/configuration.md)
+> ##### Type: [ProviderOptionsObject](https://github.com/vidiun/pakhshkit-js-providers/blob/master/docs/configuration.md)
 >
 > ##### Description: Defines the provider configuration.
 
@@ -107,7 +107,7 @@ The configuration uses the following structure:
 
 > ### config.ui
 >
-> ##### Type: [UIOptionsObject](https://github.com/kaltura/playkit-js-ui/blob/master/docs/configuration.md)
+> ##### Type: [UIOptionsObject](https://github.com/vidiun/pakhshkit-js-ui/blob/master/docs/configuration.md)
 >
 > ##### Description: Defines the user interface (UI) configuration.
 
@@ -115,7 +115,7 @@ The configuration uses the following structure:
 
 > ### config.cast
 >
-> ##### Type: [CastConfigObject](https://github.com/kaltura/playkit-js-cast-sender/blob/master/docs/configuration-api.md#castconfigobject)
+> ##### Type: [CastConfigObject](https://github.com/vidiun/pakhshkit-js-cast-sender/blob/master/docs/configuration-api.md#castconfigobject)
 >
 > ##### Description: Defines the cast configuration.
 

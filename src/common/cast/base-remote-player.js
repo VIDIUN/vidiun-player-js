@@ -1,14 +1,14 @@
 // @flow
 /* eslint no-unused-vars: 0 */
 import {IRemotePlayer} from './remote-player';
-import {EventManager, FakeEventTarget, TextStyle, Track, Utils} from '@playkit-js/playkit-js';
+import {EventManager, FakeEventTarget, TextStyle, Track, Utils} from '@pakhshkit-js/pakhshkit-js';
 import {RemoteControl} from './remote-control';
 import getLogger from '../utils/logger';
 import {RemoteSession} from './remote-session';
 
 /**
  * Basic remote player.
- * Implements the Kaltura Player playback, ads, tracks,vr and cast APIs.
+ * Implements the Vidiun Player playback, ads, tracks,vr and cast APIs.
  * Remote players should extend this class and implement the needed API.
  * @class BaseRemotePlayer
  * @param {string} name - Remote player name.
@@ -572,7 +572,7 @@ class BaseRemotePlayer extends FakeEventTarget implements IRemotePlayer {
   }
 
   /**
-   * @returns {KPOptionsObject} - The runtime remote player config.
+   * @returns {VPOptionsObject} - The runtime remote player config.
    * @instance
    * @memberof BaseRemotePlayer
    */

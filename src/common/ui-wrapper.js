@@ -1,14 +1,14 @@
 // @flow
-import {UIManager} from '@playkit-js/playkit-js-ui';
-import {Env, Utils} from '@playkit-js/playkit-js';
+import {UIManager} from '@pakhshkit-js/pakhshkit-js-ui';
+import {Env, Utils} from '@pakhshkit-js/pakhshkit-js';
 import {DEFAULT_THUMBS_SLICES, DEFAULT_THUMBS_WIDTH, getThumbSlicesUrl} from './utils/thumbs';
-import {KalturaPlayer} from '../kaltura-player';
+import {VidiunPlayer} from '../vidiun-player';
 
 class UIWrapper {
   _uiManager: UIManager;
   _disabled: boolean = false;
 
-  constructor(player: KalturaPlayer, options: KPOptionsObject) {
+  constructor(player: VidiunPlayer, options: VPOptionsObject) {
     const config: UIOptionsObject = options.ui;
     if (config.disable) {
       this._disabled = true;

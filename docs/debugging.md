@@ -18,15 +18,15 @@ To debug the player and view explicit messages in the console, you'll need to ru
 In your application, define at the top of your page the following window debug variable:
 
 ```js
-window.DEBUG_KALTURA_PLAYER = true;
+window.DEBUG_VIDIUN_PLAYER = true;
 ```
 
 **Option 2: Add a query string parameter to the page URL**
 
-In your page URL, add the `debugKalturaPlayer` query string parameter:
+In your page URL, add the `debugVidiunPlayer` query string parameter:
 
 ```js
-http://my/page/url?debugKalturaPlayer
+http://my/page/url?debugVidiunPlayer
 ```
 
 **Options 3: Using Player Config**
@@ -37,7 +37,7 @@ var config = {
     logLevel: "DEBUG"
     ...
 };
-var player = KalturaPlayer.setup(config);
+var player = VidiunPlayer.setup(config);
 ```
 
 ## About Player Logs
