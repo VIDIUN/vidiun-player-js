@@ -26,9 +26,9 @@
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ott-analytics/-/pakhshkit-js-ott-analytics-0.5.0.tgz#09d903adf6c9389d86f84e32eeb8bf68351908a2"
 
-"@pakhshkit-js/pakhshkit-js-ui@^0.40.0":
-  version "0.40.0"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ui/-/pakhshkit-js-ui-0.40.0.tgz#1515dc25493826a1d355257f51df149e81de400c"
+"@pakhshkit-js/pakhshkit-js-ui@^0.40.1":
+  version "0.40.1"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ui/-/pakhshkit-js-ui-0.40.1.tgz#1515dc25493826a1d355257f51df149e81de400c"
   integrity sha512-XIZ547BlCb+m4cMKGqCf6M2EGBFT0yc6wseyC5VhIo4/ZWA4UL/cSU0jWXLN46BSg27O60S8ur/S41L2YlsGDg==
   dependencies:
     empty "^0.10.1"
@@ -39,9 +39,9 @@
     preact-redux "^2.0.1"
     redux "^3.6.0"
 
-"@pakhshkit-js/pakhshkit-js@^0.46.1":
-  version "0.46.1"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js/-/pakhshkit-js-0.46.1.tgz#75109fefab7e8e9e28403ac75aa1c91de0063721"
+"@pakhshkit-js/pakhshkit-js@^0.46.2":
+  version "0.46.2"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js/-/pakhshkit-js-0.46.2.tgz#75109fefab7e8e9e28403ac75aa1c91de0063721"
   integrity sha512-S1VWmjSwfZTTIan4V4Emf+kFy61hrJFo8Z73u/0kLe/9Dgx79nnvPKxjiclKmKXHi5dOkuiGc5JbfSrtgzYIdw==
   dependencies:
     js-logger "^1.3.0"
