@@ -319,10 +319,10 @@ function configureVrDefaultOptions(options: VPOptionsObject): void {
 /**
  * Sets config option for LG TV
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {VPOptionsObject} options - vidiun player options
  * @returns {void}
  */
-function configureLGTVDefaultOptions(options: KPOptionsObject): void {
+function configureLGTVDefaultOptions(options: VPOptionsObject): void {
   if (isLGTV() && options.plugins && options.plugins.ima) {
     const imaForceReload = Utils.Object.getPropertyPath(options, 'plugins.ima.forceReloadMediaAfterAds');
     const delayUntilSourceSelected = Utils.Object.getPropertyPath(options, 'plugins.ima.delayInitUntilSourceSelected');
