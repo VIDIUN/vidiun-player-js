@@ -4,32 +4,28 @@
 
 "@pakhshkit-js/pakhshkit-js-dash@^1.10.1":
   version "1.10.1"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-dash/-/pakhshkit-js-dash-1.10.1.tgz#cda309eef1bd5737f5610536167cbe35ff0c49d7"
-  integrity sha512-0QM2hU4hY7MvsSNyEcMDqtmfIXtqlKKaLpKl5mlF3efVhWGBwlHzj0eFovIFEiBP1NJWoqw8KW1Mk7g0Fb/r6A==
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-dash/-/pakhshkit-js-dash-1.10.1.tgz#65d0c2233e71ddd3fd9d9684c8d5d5e1cee04181"
+  integrity sha512-hyxUChL4TDF/1z6qi05zZmaGOhpFfZ9v1wk8RbTGaHvNqDq1Sbzp+yOk+Sg8GNk+oBLhBGMkK7ZwcC4IkmOmFg==
 
 "@pakhshkit-js/pakhshkit-js-hls@^1.13.1":
   version "1.13.1"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-hls/-/pakhshkit-js-hls-1.13.1.tgz#a3a35f41f7fff9d74a3d8f50bb768d8cfc77fc8c"
-  integrity sha512-1H+0nYMkrdYYbMewXDFIqMoQBhKOKTeTDOMeys0BakmA28l108wL+EFDj61chYxIphhec/S4Ol+orddcrtp6gA==
-
-"@pakhshkit-js/pakhshkit-js-vanalytics@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-vanalytics/-/pakhshkit-js-vanalytics-0.10.1.tgz#0b62494daaf8b30cd3aa6ae21e8a396df9b8d335"
-  integrity sha512-udnTQwpSoIB5kZPJkxqGV1HfGwbz3U1OkIucNL8ldphYflllxH+0L2OHzQ4VV/b2rs41HZtlVMS29fTEIWxGmQ==
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-hls/-/pakhshkit-js-hls-1.13.1.tgz#fa0bbb34f1462dd74668af44fc761a1bf2561da5"
+  integrity sha512-y36ZFJ4StjMhdDkEpf8CjGlH29U8/vvNemsMOgDCPaWs8Gs1csDaoqTbl7gXqVGhhLXU3GoQ8DuMxmSustckMg==
 
 "@pakhshkit-js/pakhshkit-js-kava@^0.7.2":
   version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-kava/-/pakhshkit-js-kava-0.7.2.tgz#2e0ad94096dbffc63d12ad2486d4f27950977f20"
-  integrity sha512-T5PzsLhcs+0hweHSanTkRR7KXV0h3fyfVSUoKexuRE2QpomgCBSMRUTmGKPVFxEuqQ+VF3htahh+PKI0KwTddg==
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-kava/-/pakhshkit-js-kava-0.7.2.tgz#0d36404f185c9e79c1a6b16cabbeace7e129292f"
+  integrity sha512-ao4U/f5sQ15FrETKS7aXENvPPSV/tYqlJ2lau9vrMNiJbE0QiGGo0RwTcOsS/v7RbLQ2oLxOSjivl+gKDKSypw==
 
 "@pakhshkit-js/pakhshkit-js-ott-analytics@^0.5.0":
   version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ott-analytics/-/pakhshkit-js-ott-analytics-0.5.0.tgz#09d903adf6c9389d86f84e32eeb8bf68351908a2"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ott-analytics/-/pakhshkit-js-ott-analytics-0.5.0.tgz#a0ec89c0548ac9ae46ac0aa7d57a11027fe989be"
+  integrity sha512-ia3PM+KrATxlub92U5kI8XG/aY170z6WHGXiOYaNnVIgmvHG7tOl3ZmvOVJ20e7E8g3iQWuaspS93sUt8TR/uw==
 
 "@pakhshkit-js/pakhshkit-js-ui@^0.40.1":
   version "0.40.1"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ui/-/pakhshkit-js-ui-0.40.1.tgz#1515dc25493826a1d355257f51df149e81de400c"
-  integrity sha512-XIZ547BlCb+m4cMKGqCf6M2EGBFT0yc6wseyC5VhIo4/ZWA4UL/cSU0jWXLN46BSg27O60S8ur/S41L2YlsGDg==
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ui/-/pakhshkit-js-ui-0.40.1.tgz#2e37729829f5ba5d29f2f26bace7f2f7ba5daf7d"
+  integrity sha512-viQkElF5kz/1Do+mp31w5QbgRhRVHRgkqqLwl9yzBpCOULm2mRKdOwsywvUtVzq52F0DbnQMy0HQpqVR4WRQGg==
   dependencies:
     empty "^0.10.1"
     js-logger "^1.3.0"
@@ -39,10 +35,15 @@
     preact-redux "^2.0.1"
     redux "^3.6.0"
 
+"@pakhshkit-js/pakhshkit-js-vanalytics@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-vanalytics/-/pakhshkit-js-vanalytics-0.10.1.tgz#de4c80cf13b2990e91fdaa02c791d94d0e01e43d"
+  integrity sha512-O3tNt1iod7wP4PvCnYb1LfsNCiscfMnoUKvMi8/SRI2xbwZsRRcQmq2Uc1+6GDjmSENYqKpCgYJgE0nbwPI7EQ==
+
 "@pakhshkit-js/pakhshkit-js@^0.46.2":
   version "0.46.2"
-  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js/-/pakhshkit-js-0.46.2.tgz#75109fefab7e8e9e28403ac75aa1c91de0063721"
-  integrity sha512-S1VWmjSwfZTTIan4V4Emf+kFy61hrJFo8Z73u/0kLe/9Dgx79nnvPKxjiclKmKXHi5dOkuiGc5JbfSrtgzYIdw==
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js/-/pakhshkit-js-0.46.2.tgz#0566a127852246e13d74a7fec95c4c0f219463a0"
+  integrity sha512-2QudWZ4r8/zwFTmSvF7udvP1ktC/fJukNRZdGdKAUbxWDnWleh9pSMcOpKPoms7GM4Ldo714n9Zgu7m1mLsLfw==
   dependencies:
     js-logger "^1.3.0"
     ua-parser-js "^0.7.13"
@@ -6330,7 +6331,7 @@ pkginfo@0.x.x:
 
 "pakhshkit-js-env-manager@https://github.com/vidiun/pakhshkit-js-env-manager.git#v3.3.2":
   version "3.3.2"
-  resolved "https://github.com/vidiun/pakhshkit-js-env-manager.git#0a3821cafd76b941df3ed42f162afba1c03a230d"
+  resolved "https://github.com/vidiun/pakhshkit-js-env-manager.git#48f66549ccd08d973e5eb1aba0587f8a071b46ea"
   dependencies:
     chalk "^2.1.0"
     fs "0.0.1-security"
@@ -6341,7 +6342,7 @@ pkginfo@0.x.x:
 
 "pakhshkit-js-providers@https://github.com/vidiun/pakhshkit-js-providers.git#v2.18.1":
   version "2.18.1"
-  resolved "https://github.com/vidiun/pakhshkit-js-providers.git#07d7fa8266656329eb8981d14829702713c6ee1d"
+  resolved "https://github.com/vidiun/pakhshkit-js-providers.git#e5102c46f04fe545a69920b1630b4fc702bb3333"
   dependencies:
     js-logger "^1.3.0"
 
